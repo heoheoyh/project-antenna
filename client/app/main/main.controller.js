@@ -6,11 +6,11 @@ class MainController {
 
   constructor($http, $scope, socket) {
     this.$http = $http;
-    this.awesomeThings = [];
+    $scope.awesomeThings = [];
 
     $http.get('/api/things').then(response => {
-      this.awesomeThings = response.data;
-      socket.syncUpdates('thing', this.awesomeThings);
+      $scope.awesomeThings = response.data;
+      socket.syncUpdates('thing', $scope.awesomeThings);
     });
 
     $scope.$on('$destroy', function() {
@@ -32,5 +32,4 @@ class MainController {
 
 angular.module('projectHeoApp')
   .controller('MainController', MainController);
-
 })();

@@ -1,27 +1,21 @@
-.thing-form {
-  margin: 20px 0;
-}
+$break-small: 320px;
+$break-medium: 640px;
+$break-large:1200px;
 
-#banner {
-  border-bottom: none;
-  margin-top: -20px;
-}
-
-#banner h1 {
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
-}
-
-.hero-unit {
-  position: relative;
-  padding: 30px 15px;
-  color: #F5F5F5;
+.md-menu-toolbar{
+  width: 100%;
   text-align: center;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-  background: #4393B9;
 }
+.md-bar{
+  margin: 0 auto;
+  text-align: left;
+}
+.img{
+  height:500px;
+  background:url(../assets/images/Hintergrund2.jpg);
+  @media screen and (max-width: $break-medium) {
+  display:none; 
+  
+  }
 
-.navbar-text {
-  margin-left: 15px;
 }
