@@ -11,7 +11,7 @@ angular.module('projectHeoApp', [
   'ui.router',
   'ui.bootstrap',
   'validation.match',
-  'ngMaterial'
+   'ui.materialize'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

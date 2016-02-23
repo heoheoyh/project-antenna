@@ -1,19 +1,28 @@
 <nav>
-  <md-toolbar class="md-menu-toolbar">
-    <md-menu-bar class="md-bar">
-      <md-menu style="margin-top:30px;">
-        <md-button ng-href="#"> project review</md-button>
-        <md-button ng-href="#">project List</md-button>
-        <md-button href="main.html" style="font-size:30px;">Project-Antenna</md-button>
-        <md-button ng-href="#">partner</md-button>
-        <md-button href="../myfile/signup.html">sign up</md-button>
-        <md-button ng-href="#">login</md-button>
-      </md-menu>
-    </md-menu-bar>
-  </md-toolbar>
+  <div class="nav-wrapper light-blue darken-3">
+    <a href="main.html" class="brand-logo center ">Project-Antenna</a>
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a href="#">project-review</a></li>
+      <li><a href="#">project-list</a></li>
+    </ul>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="#">partner</a></li>
+      <li><a href="/myfile/signup.html">sign up</a></li>
+      <li><a href="#">login</a></li>
+    </ul>
+    <ul id="mobile-demo" class="side-nav">
+      <li><a href="#">project-review</a></li>
+      <li><a href="#">project-list</a></li>
+      <li><a href="#">partner</a></li>
+      <li><a href="/myfile/signup.html">sign up</a></li>
+      <li><a href="#">login</a></li>
+    </ul>
+    <a href="#" class="button-collapse" data-activates="mobile-demo" data-sidenav="left" data-menuwidth="250" data-closeonclick="false"><i class="mdi-navigation-menu"></i>
+    </a>
+  </div>
 </nav>
 
 <section>
-  <div class="img">
+  <div class="img"></div>
 </section>
 
