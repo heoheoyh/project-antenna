@@ -17,13 +17,14 @@ class SignupController {
 
     if (form.$valid) {
       this.Auth.createUser({
-        name: this.user.name,
+        firstname: this.user.firstname,
+        lastname:this.user.lastname,
         email: this.user.email,
         password: this.user.password
       })
       .then(() => {
         // Account created, redirect to home
-        this.$state.go('main');
+        this.$state.go('login');
       })
       .catch(err => {
         err = err.data;
