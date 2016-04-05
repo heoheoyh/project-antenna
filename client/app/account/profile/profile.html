@@ -1,0 +1,129 @@
+<navbar></navbar>
+
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h3>Edit Profile</h3>
+    </div>
+    <div class="col s12">
+      <form class="form" name="form"  ng-submit="vm.editprofile(form)">
+        <div class="row">
+          <div class="input-field col s6">
+            <span class="prefix">Name</span>
+            <input disabled id="name" type="text" class="validate" ng-model="vm.user.name">
+            <label for="disabled" class="grey-text text-darken-1">{{ nav.getCurrentUser().name }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <span class="prefix">Email</span>
+            <input disabled id="email" type="email" class="validate" ng-model="vm.user.email">
+            <label for="disabled" class="grey-text text-darken-1">{{ nav.getCurrentUser().email }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <span class="prefix">URL</span>
+            <input id="url" name="url"  type="text" class="validate" ng-model="vm.user.url">
+            <label for="url">{{ nav.getCurrentUser().url }}</label>
+          </div>
+        </div>
+        <div class="file-field input-field">
+          <div class="btn blue">
+            <span>Upload</span>
+            <input type="file" id="image">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <p>
+            <span>gender</span>
+            <input class="with-gap" name="group1" type="radio" id="male" />
+            <label for="male">male</label>
+            <input class="with-gap" name="group1" type="radio" id="female" />
+            <label for="female">female</label>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <p>Interests</p>
+            <select multiple  material-select watch>
+              <option value="" disabled selected>Choose your interesting fields</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+              <option value="5">Option 5</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <span>Location</span>
+            <div id="searchBoxParent"></div>
+            <div id="map_canvas" ng-controller="ProfileController">
+              <script type="text/ng-template" id="searchbox.tpl.html">
+                <input type="text" placeholder="Search Box"> 
+              </script>
+              <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
+                <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+                          </ui-gmap-marker>
+                <ui-gmap-search-box template="searchbox.template" events="searchbox.events" parentdiv="searchbox.parentdiv"></ui-gmap-search-box>
+              </ui-gmap-google-map>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <p>My type</p>
+            <select multiple  material-select watch>
+              <option value="" disabled selected>Choose Your Type</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+              <option value="5">Option 5</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <p>Partner Fields</p>
+            <select multiple  material-select watch>
+              <option value="" disabled selected>Choose Partner fields you want</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+              <option value="5">Option 5</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <i id="message"class="material-icons prefix">mode_edit</i>
+            <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+            <label for="icon_prefix2">Message</label>
+          </div>
+        </div>
+
+        <button class="btn waves-effect waves-light blue" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="page-footer grey darken-4"></footer>
+
+
+

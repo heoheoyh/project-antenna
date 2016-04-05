@@ -25,6 +25,8 @@ module.exports = function(config) {
       'client/bower_components/Materialize/bin/materialize.js',
       'client/bower_components/materialize/bin/materialize.js',
       'client/bower_components/angular-materialize/src/angular-materialize.js',
+      'client/bower_components/angular-simple-logger/dist/angular-simple-logger.js',
+      'client/bower_components/angular-google-maps/dist/angular-google-maps.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'node_modules/socket.io-client/socket.io.js',

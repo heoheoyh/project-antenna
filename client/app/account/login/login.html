@@ -2,12 +2,10 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
-      <h1>Login</h1>
-      <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test@example.com</code> / <code>test</code></p>
-      <p>Admin account is <code>admin@example.com</code> / <code>admin</code></p>
+    <div class="col s12">
+      <h3>Login</h3>
     </div>
-    <div class="col-sm-12">
+    <div class="col s12">
       <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
 
         <div class="form-group">
@@ -34,22 +32,21 @@
         </div>
 
         <div>
-          <button class="btn btn-inverse btn-lg btn-login" type="submit">
+          <button class="btn waves-effect waves-light blue" type="submit">
             Login
           </button>
-          <a class="btn btn-default btn-lg btn-register" ui-sref="signup">
-            Register
+          <div class="GoSignup" style="margin-top:30px;">
+            <span style="font-size:1.5em; font-weight:bold">Not a member yet?</span>
+          <a class="blue-text text-darken-1" href="signup">
+            Register now
           </a>
-        </div>
-
-        <hr/>
-        <div class="row">
-          <div class="col-sm-4 col-md-3">
-            <oauth-buttons classes="btn-block"></oauth-buttons>
           </div>
         </div>
+
       </form>
     </div>
   </div>
-  <hr>
 </div>
+
+
+  <footer class="page-footer grey darken-4"></footer>

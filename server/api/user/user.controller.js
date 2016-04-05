@@ -48,6 +48,16 @@ export function create(req, res, next) {
     .catch(validationError(res));
 }
 
+export function update(req, res, next) {
+  if (!req.body.url) { next(new Error('somthing went wrong...')); }
+
+  let user = req.user;
+  user.url = req.body.url;
+  user.save()
+    .then(() => res.status(204).send())
+    .catch(next);
+}
+
 /**
  * Get a single user
  */
