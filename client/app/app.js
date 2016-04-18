@@ -11,7 +11,8 @@ angular.module('projectHeoApp', [
     'ui.router',
     'validation.match',
     'ui.materialize',
-    'uiGmapgoogle-maps'
+    'uiGmapgoogle-maps',
+   'checklist-model'
 ])
 .config(function($urlRouterProvider, $locationProvider, uiGmapGoogleMapApiProvider) {
   $urlRouterProvider

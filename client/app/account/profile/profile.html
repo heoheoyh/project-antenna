@@ -6,26 +6,24 @@
       <h3>Edit Profile</h3>
     </div>
     <div class="col s12">
-      <form class="form" name="form"  ng-submit="vm.editprofile(form)">
+      <form class="form" name="form" ng-submit="vm.editprofile(form)">
         <div class="row">
           <div class="input-field col s6">
             <span class="prefix">Name</span>
             <input disabled id="name" type="text" class="validate" ng-model="vm.user.name">
-            <label for="disabled" class="grey-text text-darken-1">{{ nav.getCurrentUser().name }}</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
             <span class="prefix">Email</span>
             <input disabled id="email" type="email" class="validate" ng-model="vm.user.email">
-            <label for="disabled" class="grey-text text-darken-1">{{ nav.getCurrentUser().email }}</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
             <span class="prefix">URL</span>
-            <input id="url" name="url"  type="text" class="validate" ng-model="vm.user.url">
-            <label for="url">{{ nav.getCurrentUser().url }}</label>
+            <input id="url" name="url"  type="text" class="validate" ng-model="vm.user.url" >
+            <label for="url">url</label>
           </div>
         </div>
         <div class="file-field input-field">
@@ -41,24 +39,25 @@
           <div class="input-field col s12">
             <p>
             <span>gender</span>
-            <input class="with-gap" name="group1" type="radio" id="male" />
+            <input class="with-gap" name="gender" type="radio" id="male" ng-value="'male'" ng-model="vm.user.gender" />
             <label for="male">male</label>
-            <input class="with-gap" name="group1" type="radio" id="female" />
+            <input class="with-gap" name="gender" type="radio" id="female" ng-value="'female'" ng-model="vm.user.gender"/>
             <label for="female">female</label>
             </p>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <p>Interests</p>
-            <select multiple  material-select watch>
-              <option value="" disabled selected>Choose your interesting fields</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
-              <option value="4">Option 4</option>
-              <option value="5">Option 5</option>
-            </select>
+            <span>Interests</span>
+            <i>(choose your interests field)</i>
+            <p>
+            <input type="checkbox" class="filled-in" id="one" checklist-value="'one'" checklist-model="vm.user.interests" />
+            <label for="one">one</label>
+            <input type="checkbox" class="filled-in" id="two" checklist-value="'two'" checklist-model="vm.user.interests" />
+            <label for="two">two</label>
+            <input type="checkbox" class="filled-in" id="three" checklist-value="'three'" checklist-model="vm.user.interests" />
+            <label for="three">three</label>
+            </p>
           </div>
         </div>
         <div class="row">
@@ -67,11 +66,11 @@
             <div id="searchBoxParent"></div>
             <div id="map_canvas" ng-controller="ProfileController">
               <script type="text/ng-template" id="searchbox.tpl.html">
-                <input type="text" placeholder="Search Box"> 
+<input type="text" placeholder="Search Box"> 
               </script>
               <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
                 <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
-                          </ui-gmap-marker>
+                </ui-gmap-marker>
                 <ui-gmap-search-box template="searchbox.template" events="searchbox.events" parentdiv="searchbox.parentdiv"></ui-gmap-search-box>
               </ui-gmap-google-map>
             </div>

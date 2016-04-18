@@ -50,9 +50,10 @@ export function create(req, res, next) {
 
 export function update(req, res, next) {
   if (!req.body.url) { next(new Error('somthing went wrong...')); }
-
   let user = req.user;
   user.url = req.body.url;
+  user.gender = req.body.gender;
+  user.interests = req.body.interests;
   user.save()
     .then(() => res.status(204).send())
     .catch(next);

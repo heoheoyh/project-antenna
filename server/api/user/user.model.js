@@ -21,7 +21,9 @@ var UserSchema = new Schema({
   salt: String,
   google: {},
   github: {},
-  url: String
+  url: String,
+  gender: String,
+  interests: String
 });
 
 /**

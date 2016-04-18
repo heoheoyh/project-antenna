@@ -13,7 +13,13 @@ class ProfileController {
     this.$state = $state;
     this.$log = $log;
    //this.getCurrentUser = Auth.getCurrentUser;
-
+   this.user={
+     name: Auth.getCurrentUser().name, 
+     email: Auth.getCurrentUser().email,
+     url: Auth.getCurrentUser().url,
+     gender: Auth.getCurrentUser().gender,
+     interests: Auth.getCurrentUser().interests
+   };
     $scope.map = {
       center: {
         latitude: 50.6278,
@@ -66,10 +72,11 @@ class ProfileController {
 
     if (form.$valid) {
       const user = this.Auth.getCurrentUser();
-      this.User.update({ id: user._id }, { url: this.user.url }).$promise
+      //console.log(this.user.interests);
+      this.User.update({ id: user._id }, { url: this.user.url, gender: this.user.gender, interests: this.user.interests }).$promise
         .then(() => {
-          this.$state.go('profile');
-          // Account created, redirect to home
+          //this.$state.go('profile');
+          location.reload();
         })
       .catch(err => {
         err = err.data;
