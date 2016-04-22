@@ -54,6 +54,10 @@ export function update(req, res, next) {
   user.url = req.body.url;
   user.gender = req.body.gender;
   user.interests = req.body.interests;
+  user.place = req.body.place;
+  user.mytype= req.body.mytype;
+  user.yourtype= req.body.yourtype;
+  user.description = req.body.description;
   user.save()
     .then(() => res.status(204).send())
     .catch(next);

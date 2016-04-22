@@ -12,14 +12,19 @@ class ProfileController {
     this.Auth = Auth;
     this.$state = $state;
     this.$log = $log;
-   //this.getCurrentUser = Auth.getCurrentUser;
-   this.user={
-     name: Auth.getCurrentUser().name, 
-     email: Auth.getCurrentUser().email,
-     url: Auth.getCurrentUser().url,
-     gender: Auth.getCurrentUser().gender,
-     interests: Auth.getCurrentUser().interests
-   };
+    //this.getCurrentUser = Auth.getCurrentUser;
+    //console.log(this.user.interests= Auth.getCurrentUser().interests);
+    this.user={
+      name: Auth.getCurrentUser().name, 
+      email: Auth.getCurrentUser().email,
+      url: Auth.getCurrentUser().url,
+      gender: Auth.getCurrentUser().gender,
+      interests: Auth.getCurrentUser().interests.split(','),
+      place: Auth.getCurrentUser().place,
+      mytype: Auth.getCurrentUser().mytype.split(','),
+      yourtype: Auth.getCurrentUser().yourtype.split(','),
+      description: Auth.getCurrentUser().description
+    };
     $scope.map = {
       center: {
         latitude: 50.6278,
@@ -73,7 +78,7 @@ class ProfileController {
     if (form.$valid) {
       const user = this.Auth.getCurrentUser();
       //console.log(this.user.interests);
-      this.User.update({ id: user._id }, { url: this.user.url, gender: this.user.gender, interests: this.user.interests }).$promise
+      this.User.update({ id: user._id }, { url: this.user.url, gender: this.user.gender, interests: this.user.interests, place: this.user.place, mytype: this.user.mytype, yourtype: this.user.yourtype, description: this.user.description }).$promise
         .then(() => {
           //this.$state.go('profile');
           location.reload();

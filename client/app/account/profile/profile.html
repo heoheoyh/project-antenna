@@ -59,56 +59,58 @@
             <label for="three">three</label>
             </p>
           </div>
-        </div>
+        </div></br>
         <div class="row">
           <div class="col s12">
             <span>Location</span>
             <div id="searchBoxParent"></div>
             <div id="map_canvas" ng-controller="ProfileController">
               <script type="text/ng-template" id="searchbox.tpl.html">
-<input type="text" placeholder="Search Box"> 
+<input type="text" placeholder="Search Box" ng-model="ngModel"> 
               </script>
               <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
                 <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
                 </ui-gmap-marker>
-                <ui-gmap-search-box template="searchbox.template" events="searchbox.events" parentdiv="searchbox.parentdiv"></ui-gmap-search-box>
+                <ui-gmap-search-box template="searchbox.template" events="searchbox.events" parentdiv="searchbox.parentdiv" ng-model="vm.user.place"></ui-gmap-search-box>
               </ui-gmap-google-map>
             </div>
           </div>
         </div>
-        <div class="row">
+         <div class="row">
           <div class="input-field col s12">
-            <p>My type</p>
-            <select multiple  material-select watch>
-              <option value="" disabled selected>Choose Your Type</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
-              <option value="4">Option 4</option>
-              <option value="5">Option 5</option>
-            </select>
+            <span>My type</span>
+            <i>(choose My type)</i>
+            <p>
+            <input type="checkbox" class="filled-in" id="good" checklist-value="'good'" checklist-model="vm.user.mytype" />
+            <label for="good">good</label>
+            <input type="checkbox" class="filled-in" id="bad" checklist-value="'bad'" checklist-model="vm.user.mytype" />
+            <label for="bad">bad</label>
+            <input type="checkbox" class="filled-in" id="sad" checklist-value="'sad'" checklist-model="vm.user.mytype" />
+            <label for="sad">sad</label>
+            </p>
           </div>
-        </div>
+        </div></br>
 
-        <div class="row">
+          <div class="row">
           <div class="input-field col s12">
-            <p>Partner Fields</p>
-            <select multiple  material-select watch>
-              <option value="" disabled selected>Choose Partner fields you want</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
-              <option value="4">Option 4</option>
-              <option value="5">Option 5</option>
-            </select>
+            <span>Partner Fields</span>
+            <i>Choose Partner fields you want</i>
+            <p>
+            <input type="checkbox" class="filled-in" id="developer" checklist-value="'developer'" checklist-model="vm.user.yourtype" />
+            <label for="developer">developer</label>
+            <input type="checkbox" class="filled-in" id="designer" checklist-value="'designer'" checklist-model="vm.user.yourtype" />
+            <label for="designer">designer</label>
+            <input type="checkbox" class="filled-in" id="business" checklist-value="' business'" checklist-model="vm.user.yourtype" />
+            <label for="business"> business</label>
+            </p>
           </div>
-        </div>
+        </div></br>
 
         <div class="row">
           <div class="input-field col s12">
             <i id="message"class="material-icons prefix">mode_edit</i>
-            <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-            <label for="icon_prefix2">Message</label>
+            <textarea id="icon_prefix2" class="materialize-textarea" ng-model="vm.user.description"></textarea>
+            <label for="icon_prefix2">Description</label>
           </div>
         </div>
 
