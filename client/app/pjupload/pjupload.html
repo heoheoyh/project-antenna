@@ -1,0 +1,55 @@
+<navbar></navbar>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h3>Project Upload</h3>
+    </div>
+    <form class="col s12" name="form" ng-submit="vm.pjupload(form)">
+      <div id="upload_form">
+        <div class="row">
+          <div class="input-field col s12">
+            <span class="prefix">Title</span>
+            <input disabled id="pj_title" type="text" class="validate">
+            <label for="pj_title">ㅇㅇ분야 팀원 구합니다</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <span>field check</span>
+            <i>(choose field you want)</i>
+            <p>
+            <input type="checkbox" class="filled-in" id="one" checklist-value="'one'" checklist-model="" />
+            <label for="one">one</label>
+            <input type="checkbox" class="filled-in" id="two" checklist-value="'two'" checklist-model="" />
+            <label for="two">two</label>
+            <input type="checkbox" class="filled-in" id="three" checklist-value="'three'" checklist-model="" />
+            <label for="three">three</label>
+            </p>
+          </div>
+        </div></br>
+        <div class="row">
+          <div class="input-field col s12">
+            <span class="prefix">Link</span>
+            <input id="pj_link" name="pj_link"  type="url" class="validate" >
+            <label for="pj_link">Write your project link</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <span class="prefix">Content</span>
+            <textarea id="content"  class="materialize-textarea"></textarea>
+            <label for="content">Project Content</label>
+          </div>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light blue" type="submit" id="upload_btn" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </form>
+  </div>
+</div>
+
+
+
+
+<footer class="page-footer grey darken-4"></footer>

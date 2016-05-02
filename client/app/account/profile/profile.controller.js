@@ -12,6 +12,7 @@ class ProfileController {
     this.Auth = Auth;
     this.$state = $state;
     this.$log = $log;
+    this.$scope = $scope;
     //this.getCurrentUser = Auth.getCurrentUser;
     //console.log(this.user.interests= Auth.getCurrentUser().interests);
     this.user={
@@ -25,6 +26,7 @@ class ProfileController {
       yourtype: Auth.getCurrentUser().yourtype.split(','),
       description: Auth.getCurrentUser().description
     };
+
     $scope.map = {
       center: {
         latitude: 50.6278,
@@ -57,6 +59,8 @@ class ProfileController {
       events :{
         places_changed: (searchBox) => {
           const place = searchBox.getPlaces()[0];
+          this.user.place = place.name;
+          console.log(this.user);
           console.log("lat: " + place.geometry.location.lat());
           console.log("lng: " + place.geometry.location.lng());
           $scope.map.center = {
@@ -78,7 +82,15 @@ class ProfileController {
     if (form.$valid) {
       const user = this.Auth.getCurrentUser();
       //console.log(this.user.interests);
-      this.User.update({ id: user._id }, { url: this.user.url, gender: this.user.gender, interests: this.user.interests, place: this.user.place, mytype: this.user.mytype, yourtype: this.user.yourtype, description: this.user.description }).$promise
+      this.User.update({ id: user._id }, {
+        url: this.user.url, 
+        gender: this.user.gender, 
+        interests: this.user.interests, 
+        place: this.user.place, 
+        mytype: this.user.mytype,
+        yourtype: this.user.yourtype, 
+        description: this.user.description 
+      }).$promise
         .then(() => {
           //this.$state.go('profile');
           location.reload();
