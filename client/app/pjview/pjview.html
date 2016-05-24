@@ -1,0 +1,36 @@
+<navbar></navbar>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h3>Project View</h3>
+    </div>
+    <table class="bordered">
+      <tbody>
+        <tr>
+          <th data-field="title">Title</th>
+          <td>{{vm.pjview.title}}</td>
+        </tr>
+        <tr>
+          <th data-field="name">Name</th>
+          <td>{{vm.pjview._creator.name}}</td>
+        </tr>
+        <tr>
+          <th data-field="field">Field</th>
+          <td>{{vm.pjview.field}}</td>
+        </tr>
+        <tr>
+          <th data-field="link">Link</th>
+          <td><a href="{{vm.pjview.link}}" target="_blank">{{vm.pjview.link}}</a></td>
+        </tr>
+        <tr id="content_box">
+          <th data-field="content">Content</th>
+          <td>{{vm.pjview.content}}</td>
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+</div>
+
+<footer class="page-footer grey darken-4"></footer>

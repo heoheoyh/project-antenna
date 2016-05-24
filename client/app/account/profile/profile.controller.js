@@ -13,17 +13,22 @@ class ProfileController {
     this.$state = $state;
     this.$log = $log;
     this.$scope = $scope;
-    //this.getCurrentUser = Auth.getCurrentUser;
-    //console.log(this.user.interests= Auth.getCurrentUser().interests);
+    $scope.items = [
+      'one', 
+      'two', 
+      'three', 
+      'four'
+    ];
+
     this.user={
       name: Auth.getCurrentUser().name, 
       email: Auth.getCurrentUser().email,
       url: Auth.getCurrentUser().url,
       gender: Auth.getCurrentUser().gender,
-      interests: Auth.getCurrentUser().interests.split(','),
+      interests: Auth.getCurrentUser().interests,
       place: Auth.getCurrentUser().place,
-      mytype: Auth.getCurrentUser().mytype.split(','),
-      yourtype: Auth.getCurrentUser().yourtype.split(','),
+      mytype: Auth.getCurrentUser().mytype,
+      yourtype: Auth.getCurrentUser().yourtype,
       description: Auth.getCurrentUser().description
     };
 
@@ -91,10 +96,10 @@ class ProfileController {
         yourtype: this.user.yourtype, 
         description: this.user.description 
       }).$promise
-        .then(() => {
-          //this.$state.go('profile');
-          location.reload();
-        })
+      .then(() => {
+        //this.$state.go('profile');
+        location.reload();
+      })
       .catch(err => {
         err = err.data;
         this.errors = {};

@@ -2,44 +2,44 @@
 
 class PjuploadController {
   //start-non-standard
-  user = {};
+  pjupload = {};
   errors = {};
   submitted = false;
   //end-non-standard
 
-  constructor(Auth, $state, $scope, $log, User) {
-    this.User = User;
-    this.Auth = Auth;
-    this.$state = $state;
-    this.$log = $log;
+  constructor( Project, $state, $scope) {
+    this.Project = Project;
+    this.$state  = $state;
     this.$scope = $scope;
-    //this.getCurrentUser = Auth.getCurrentUser;
-    //console.log(this.user.interests= Auth.getCurrentUser().interests);
-    this.user={
-    };
 
+    $scope.items = [
+      'one', 
+      'two', 
+      'three', 
+      'four'
+    ];
+    $scope.limit = 3;
+    $scope.checked = 0;
+    $scope.checkChanged = function(item){
+      if(item.winner) $scope.checked++;
+      else $scope.checked--;
+      console.log($scope.checked)
+    }
 
   }
 
-  pjupload(form) {
+  upload(form) {
     this.submitted = true;
 
     if (form.$valid) {
-      const user = this.Auth.getCurrentUser();
-      //console.log(this.user.interests);
-      this.User.update({ id: user._id }, {
-        url: this.user.url, 
-        gender: this.user.gender, 
-        interests: this.user.interests, 
-        place: this.user.place, 
-        mytype: this.user.mytype,
-        yourtype: this.user.yourtype, 
-        description: this.user.description 
-      }).$promise
-      .then(() => {
-        //this.$state.go('profile');
-        location.reload();
-      })
+      //$http.post('/api/projects/', this.pjupload)
+      this.Project.save(this.pjupload).$promise
+        .then((res) => {
+          alert('success');
+          this.$state.go('pjlist');
+          //location.reload();
+          //console.log(res);
+        })
       .catch(err => {
         err = err.data;
         this.errors = {};

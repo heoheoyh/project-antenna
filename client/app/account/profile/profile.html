@@ -50,14 +50,12 @@
           <div class="input-field col s12">
             <span>Interests</span>
             <i>(choose your interests field)</i>
-            <p>
-            <input type="checkbox" class="filled-in" id="one" checklist-value="'one'" checklist-model="vm.user.interests" />
-            <label for="one">one</label>
-            <input type="checkbox" class="filled-in" id="two" checklist-value="'two'" checklist-model="vm.user.interests" />
-            <label for="two">two</label>
-            <input type="checkbox" class="filled-in" id="three" checklist-value="'three'" checklist-model="vm.user.interests" />
-            <label for="three">three</label>
-            </p>
+            <br>
+            <span ng-repeat="item in items">
+              <input type="checkbox" class="filled-in" id="{{item}}" checklist-model="vm.user.interests" checklist-value="item" ng-change="checkChanged(item)" ng-disabled="checked==limit && !item.winner"/>
+              <label for="{{item}}">{{item}}</label>
+            </span>
+
           </div>
         </div></br>
         <div class="row">
@@ -76,7 +74,7 @@
             </div>
           </div>
         </div>
-         <div class="row">
+        <div class="row">
           <div class="input-field col s12">
             <span>My type</span>
             <i>(choose My type)</i>
@@ -91,7 +89,7 @@
           </div>
         </div></br>
 
-          <div class="row">
+        <div class="row">
           <div class="input-field col s12">
             <span>Partner Fields</span>
             <i>Choose Partner fields you want</i>

@@ -1,30 +1,32 @@
-<nav>
-  <div class="nav-wrapper blue accent-4">
-    <a href="main" class="brand-logo center ">Project-Antenna</a>
-    <ul id="nav-mobile" class="left hide-on-med-and-down">
-      <li><a href="#">project-review</a></li>
-      <li><a href="pjlist">project-list</a></li>
-    </ul>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="partner">partner</a></li>
-      <li ng-hide="nav.isLoggedIn()"><a href="signup">sign up</a></li>
-      <li ng-hide="nav.isLoggedIn()"><a href="login">login</a></li>
-      <li ng-show="nav.isLoggedIn()"><a class='dropdown' href='#' data-activates='demoDropdown' dropdown data-hover="false">{{ nav.getCurrentUser().name }}</a></li>
-      <li ng-show="nav.isLoggedIn()"><a href="logout">logout</a></li>
-    </ul>
-    <ul id="mobile-demo" class="side-nav">
-      <li><a href="#">project-review</a></li>
-      <li><a href="#">project-list</a></li>
-      <li><a href="partner">partner</a></li>
-      <li ng-hide="nav.isLoggedIn()"><a href="signup">sign up</a></li>
-      <li ng-hide="nav.isLoggedIn()"><a href="login">login</a></li>
-      <li ng-show="nav.isLoggedIn()"><a href="settings">{{ nav.getCurrentUser().name }}</a></li>
-      <li ng-show="nav.isLoggedIn()"><a href="logout">logout</a></li>
-    </ul>
-    <a href="#" class="button-collapse" data-activates="mobile-demo" data-sidenav="left" data-menuwidth="250" data-closeonclick="true"><i class="mdi-navigation-menu"></i>
-    </a>
-  </div>
-</nav>
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper blue accent-4">
+      <a href="main" class="brand-logo center ">Project-Antenna</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="#">project-review</a></li>
+        <li><a href="pjlist">project-list</a></li>
+      </ul>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="partner">partner</a></li>
+        <li ng-hide="nav.isLoggedIn()"><a href="signup">sign up</a></li>
+        <li ng-hide="nav.isLoggedIn()"><a href="login">login</a></li>
+        <li ng-show="nav.isLoggedIn()"><a class='dropdown' href='#' data-activates='demoDropdown' dropdown data-hover="false">{{ nav.getCurrentUser().name }}</a></li>
+        <li ng-show="nav.isLoggedIn()"><a href="logout">logout</a></li>
+      </ul>
+      <ul id="mobile-demo" class="side-nav">
+        <li><a href="#">project-review</a></li>
+        <li><a href="pjlist">project-list</a></li>
+        <li><a href="partner">partner</a></li>
+        <li ng-hide="nav.isLoggedIn()"><a href="signup">sign up</a></li>
+        <li ng-hide="nav.isLoggedIn()"><a href="login">login</a></li>
+        <li ng-show="nav.isLoggedIn()"><a href="settings">{{ nav.getCurrentUser().name }}</a></li>
+        <li ng-show="nav.isLoggedIn()"><a href="logout">logout</a></li>
+      </ul>
+      <a href="#" class="button-collapse" data-activates="mobile-demo" data-sidenav="left" data-menuwidth="250" data-closeonclick="true"><i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
 <ul id='demoDropdown' class='dropdown-content'>
   <li><a href="profile" class="black-text">profile</a></li>
   <li><a href="settings" class="black-text">settings</a></li>

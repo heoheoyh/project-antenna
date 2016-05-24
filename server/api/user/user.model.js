@@ -23,11 +23,11 @@ var UserSchema = new Schema({
   github: {},
   url: String,
   gender: String,
-  interests: { type: String, default: 'one' },
+  interests: [],
   place: String,
-  mytype: {type:String, default: 'good'},
-  yourtype: {type:String, default: 'developer'},
-  description: String
+  mytype: [],
+  yourtype: [],
+  description: String,
 });
 
 /**

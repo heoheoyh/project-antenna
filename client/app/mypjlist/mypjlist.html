@@ -2,31 +2,31 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
-      <h3>Project List</h3>
+      <h3>My Project</h3>
     </div>
     <table id="list_table" class="bordered centered">
       <thead>
         <tr>
           <th data-field="index">No</th>
           <th data-field="id">Title</th>
-          <th data-field="field">Field</th>
-          <th data-field="name">Name</th>
           <th data-field="date">Date</th>
+          <th data-field="update">Update</th>
+          <th data-field="delete">Delete</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr ng-repeat="x in pjlist"  >
+        <tr ng-repeat="y in mypjlist" >
           <td> {{$index + 1}} </td>
-          <td><a ui-sref="pjview({ pid: x._id })"> {{x.title}}</a></td>
-          <td>{{x.field}}</td>
-          <td>{{x._creator.name}}</td>
-          <td>{{x.date | date:'yyyy-MM-dd HH:mm'}}</td>
+          <td>{{y.title}}</td>
+          <td>{{y.date | date:'yyyy-MM-dd HH:mm'}}</td>
+          <td><a ui-sref="pjupdate({ mypjId: y._id })">Update</a></td>
+          <td><a ui-sref="pjdelete({ mypjId: y._id })">Delete</a></td>
         </tr>
       </tbody>
     </table>
   </div>
-  <a href="mypjlist"><button class="btn waves-effect waves-lignt blue right">My Project</button></a>
+  <a href="pjupload"><button class="btn waves-effect waves-lignt blue right">Upload Project</button></a>
 </div>
 
 

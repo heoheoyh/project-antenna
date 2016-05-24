@@ -3,10 +3,10 @@
 angular.module('projectHeoApp')
   .config(function($stateProvider) {
     $stateProvider
-      .state('pjlist', {
-        url: '/pjlist',
-        templateUrl: 'app/pjlist/pjlist.html',
-        controller: 'PjlistController',
+      .state('pjview', {
+        url: '/pjview/:pid',
+        templateUrl: 'app/pjview/pjview.html',
+        controller: 'PjviewController',
         controllerAs: 'vm'
       });
   });

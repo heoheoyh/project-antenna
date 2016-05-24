@@ -49,16 +49,17 @@ export function create(req, res, next) {
 }
 
 export function update(req, res, next) {
-  if (!req.body.url) { next(new Error('somthing went wrong...')); }
+  //if (!req.body.url) { next(new Error('somthing went wrong...')); }
   let user = req.user;
-  user.url = req.body.url;
-  user.gender = req.body.gender;
-  user.interests = req.body.interests;
-  user.place = req.body.place;
-  user.mytype= req.body.mytype;
-  user.yourtype= req.body.yourtype;
-  user.description = req.body.description;
-  user.save()
+//  user.url = req.body.url;
+//  user.gender = req.body.gender;
+//  user.interests = req.body.interests;
+//  user.place = req.body.place;
+//  user.mytype= req.body.mytype;
+//  user.yourtype= req.body.yourtype;
+//  user.description = req.body.description;
+  user.set(req.body).save()
+  //user.save()
     .then(() => res.status(204).send())
     .catch(next);
 }
