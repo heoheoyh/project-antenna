@@ -19,9 +19,8 @@
             <i>(choose field you want)</i>
             <br>
             <span ng-repeat="item in items">
-            <!-- <input type="checkbox" class="filled-in" id="one" checklist-value="'one'" checklist-model="vm.pjupload.field" />-->
-            <input type="checkbox" class="filled-in" id="{{item}}" checklist-model="vm.pjupload.field" checklist-value="item" ng-change="checkChanged(item)" ng-disabled="checked==limit && !item.winner"/>
-            <label for="{{item}}">{{item}}</label>
+            <input type="checkbox" class="filled-in" id="{{item.name}}" ng-model="item.ischecked" ng-value="item.name" ng-change="checkChanged(item)" ng-disabled="checkNum==limit && !item.ischecked"/>
+            <label for="{{item.name}}">{{item.name}}</label>
             </span>
           </div>
         </div></br>

@@ -6,7 +6,7 @@ import {Schema} from 'mongoose';
 var ProjectSchema = new Schema({
   _creator : { type: Schema.Types.ObjectId, ref: 'User' },
   title    : String,
-  field    : String,
+  field    : [],
   link     : String,
   content  : String,
   date     : { type: Date,  default: Date.now   }

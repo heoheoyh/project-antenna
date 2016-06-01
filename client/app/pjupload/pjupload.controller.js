@@ -17,19 +17,24 @@ class PjuploadController {
       'two', 
       'three', 
       'four'
-    ];
+    ].map((v) => ({ name: v }));
     $scope.limit = 3;
-    $scope.checked = 0;
+    $scope.checkNum = 0;
     $scope.checkChanged = function(item){
-      if(item.winner) $scope.checked++;
-      else $scope.checked--;
-      console.log($scope.checked)
+      if(item.ischecked) $scope.checkNum++;
+      else $scope.checkNum--;
+      console.log($scope.checkNum)
     }
 
   }
 
   upload(form) {
     this.submitted = true;
+    const gotcha = this.$scope.items
+      .filter((item) => item.ischecked)
+      .map((item) => item.name);
+    console.log(gotcha);
+    this.pjupload.field= gotcha;
 
     if (form.$valid) {
       //$http.post('/api/projects/', this.pjupload)

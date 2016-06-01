@@ -19,17 +19,32 @@ class PjupdateController {
       'two', 
       'three', 
       'four'
-    ];
-
+    ].map((v) => ({ name: v }));
+    $scope.limit = 3;
+    $scope.checkNum = 0;
+    $scope.checkChanged = function(item){
+      if(item.ischecked) $scope.checkNum++;
+      else $scope.checkNum--;
+      console.log($scope.checkNum)
+    }
     this.Project.get({ id: $stateParams.mypjId}).$promise
       .then((res) => {
         this.pjupdate = res;
-        console.log(res);
+       $scope.items =  $scope.items.map((item) => {
+          item.ischecked = this.pjupdate.field.indexOf(item.name) >= 0;
+          return item;
+        });
+
       });
   }
 
   update(form) {
     this.submitted = true;
+    const gotcha = this.$scope.items
+      .filter((item) => item.ischecked)
+      .map((item) => item.name);
+    console.log(gotcha);
+    this.pjupdate.field= gotcha;
 
     if (form.$valid) {
       this.$http.put('/api/projects/' + this.$stateParams.mypjId, this.pjupdate)

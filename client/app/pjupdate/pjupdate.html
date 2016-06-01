@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
-      <h3>Project Upload</h3>
+      <h3>Project Update</h3>
     </div>
     <form class="col s12" name="form" ng-submit="vm.update(form)">
       <div id="update_form">
@@ -17,13 +17,12 @@
           <div class="input-field col s12">
             <span>field check</span>
             <i>(choose field you want)</i><br>
-              <span ng-repeat="item in items">
-            <!-- <input type="checkbox" class="filled-in" id="one" checklist-value="'one'" checklist-model="vm.pjupload.field" />-->
-            <input type="checkbox" class="filled-in" id="{{item}}" checklist-model="vm.pjupdate.field" checklist-value="item" ng-change="checkChanged(item)" ng-disabled="checked==limit && !item.winner"/>
-            <label for="{{item}}">{{item}}</label>
+            <span ng-repeat="item in items">
+              <input type="checkbox" class="filled-in" id="{{item.name}}" ng-model="item.ischecked" ng-value="item.name" ng-change="checkChanged(item)" ng-disabled="checkNum==limit && !item.ischecked"/>
+              <label for="{{item.name}}">{{item.name}}</label>
             </span>
 
-         </div>
+          </div>
         </div></br>
         <div class="row">
           <div class="input-field col s12">

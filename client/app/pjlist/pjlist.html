@@ -19,7 +19,7 @@
         <tr ng-repeat="x in pjlist"  >
           <td> {{$index + 1}} </td>
           <td><a ui-sref="pjview({ pid: x._id })"> {{x.title}}</a></td>
-          <td>{{x.field}}</td>
+          <td>{{x.field.join(' ')}}</td>
           <td>{{x._creator.name}}</td>
           <td>{{x.date | date:'yyyy-MM-dd HH:mm'}}</td>
         </tr>

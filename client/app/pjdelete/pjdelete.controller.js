@@ -3,7 +3,6 @@
 
 class PjdeleteController {
   errors = {};
-  submitted = false;
 
   constructor(Project, $scope, $stateParams, $http, $state) {
     this.Project = Project;
@@ -19,25 +18,18 @@ class PjdeleteController {
       });
 
   }
-  del(form){
-    this.submitted = true;
+  del(){
+    this.$http.delete('/api/projects/' + this.$stateParams.mypjId, this.pjdelete)
+      .then((res) => {
+        alert('success');
+        this.$state.go('mypjlist');
+      })
+    .catch(err => {
+      err = err.data;
+      this.errors = {};
 
-    if(form.$valid) {
-      this.$http.delete('/api/projects/' + this.$stateParams.mypjId, this.pjdelete)
-        .then((res) => {
-          alert('success');
-          this.$state.go('mypjlist');
-        })
-      .catch(err => {
-        err = err.data;
-        this.errors = {};
+    });
 
-        angular.forEach(err.errors, (error, field) => {
-          form[field].$setValidity('mongoose', false);
-          this.errors[field] = error.message;
-        });
-      });
-    }
   }
 }
 angular.module('projectHeoApp')
