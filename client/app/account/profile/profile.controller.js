@@ -7,12 +7,13 @@ class ProfileController {
   submitted = false;
   //end-non-standard
 
-  constructor(Auth, $state, $scope, $log, User, Upload, $timeout) {
+  constructor(Auth, $state, $scope, $log, User, Upload) {
     this.User = User;
     this.Auth = Auth;
     this.$state = $state;
     this.$log = $log;
     this.$scope = $scope;
+    this.Upload = Upload;
 
     $scope.items = [
       'one', 
@@ -25,7 +26,6 @@ class ProfileController {
     $scope.checkChanged = function(item){
       if(item.ischecked) $scope.checkNum++;
       else $scope.checkNum--;
-      console.log($scope.checkNum)
     }
     $scope.mytypes = [
       'good', 
@@ -38,7 +38,6 @@ class ProfileController {
     $scope.checkChanged2 = function(mytype){
       if(mytype.ischecked) $scope.checkNum2++;
       else $scope.checkNum2--;
-      console.log($scope.checkNum2)
     }
     $scope.yourtypes = [
       'developer', 
@@ -51,7 +50,6 @@ class ProfileController {
     $scope.checkChanged3 = function(yourtype){
       if(yourtype.ischecked) $scope.checkNum3++;
       else $scope.checkNum3--;
-      console.log($scope.checkNum3)
     }
 
 
@@ -74,6 +72,7 @@ class ProfileController {
       name: Auth.getCurrentUser().name, 
       email: Auth.getCurrentUser().email,
       url: Auth.getCurrentUser().url,
+      profileUrl: Auth.getCurrentUser().profileImage,
       gender: Auth.getCurrentUser().gender,
       interests: Auth.getCurrentUser().interests,
       place: Auth.getCurrentUser().place,
@@ -87,105 +86,107 @@ class ProfileController {
         data: { file: file},
       })};
 
-      $scope.map = {
-        center: {
-          latitude: 50.6278,
-          longitude: 3.0583
-        },
-        zoom: 16,
-        markers: [],
-        options: {
-          scrollwheel:false
+    $scope.map = {
+      center: {
+        latitude: 50.6278,
+        longitude: 3.0583
+      },
+      zoom: 16,
+      markers: [],
+      options: {
+        scrollwheel:false
+      }
+    };
+    $scope.marker = {
+      id: 0,
+      coords: {
+        latitude: 50.6278,
+        longitude: 3.0583
+      }
+    };
+
+    $scope.searchbox= {
+      template: 'searchbox.tpl.html',
+      position:'top-right',
+      position:'top-left',
+      events:'events', 
+      parentdiv:'searchBoxParent',
+      options: {
+        bounds: {},
+        visible: true
+      },
+      events :{
+        places_changed: (searchBox) => {
+          const place = searchBox.getPlaces()[0];
+          this.user.place = place.name;
+          console.log(this.user);
+          console.log("lat: " + place.geometry.location.lat());
+          console.log("lng: " + place.geometry.location.lng());
+          $scope.map.center = {
+            latitude: place.geometry.location.lat(),
+            longitude: place.geometry.location.lng()
+          };
+          $scope.marker.coords = {
+            latitude: place.geometry.location.lat(),
+            longitude:place.geometry.location.lng()
+          };
         }
-      };
-      $scope.marker = {
-        id: 0,
-        coords: {
-          latitude: 50.6278,
-          longitude: 3.0583
-        }
-      };
+      }
+    };
+  }
 
-      $scope.searchbox= {
-        template: 'searchbox.tpl.html',
-        position:'top-right',
-        position:'top-left',
-        events:'events', 
-        parentdiv:'searchBoxParent',
-        options: {
-          bounds: {},
-          visible: true
-        },
-        events :{
-          places_changed: (searchBox) => {
-            const place = searchBox.getPlaces()[0];
-            this.user.place = place.name;
-            console.log(this.user);
-            console.log("lat: " + place.geometry.location.lat());
-            console.log("lng: " + place.geometry.location.lng());
-            $scope.map.center = {
-              latitude: place.geometry.location.lat(),
-              longitude: place.geometry.location.lng()
-            };
-            $scope.marker.coords = {
-              latitude: place.geometry.location.lat(),
-              longitude:place.geometry.location.lng()
-            };
-          }
-        }
-      };
-    }
+  editprofile(form) {
+    this.submitted = true;
+    const gotcha = this.$scope.items
+      .filter((item) => item.ischecked)
+      .map((item) => item.name);
+    this.user.interests= gotcha;
 
-    editprofile(form) {
-      this.submitted = true;
-      const gotcha = this.$scope.items
-        .filter((item) => item.ischecked)
-        .map((item) => item.name);
-      console.log(gotcha);
-      this.user.interests= gotcha;
+    const gotcha2 = this.$scope.mytypes
+      .filter((mytype) => mytype.ischecked)
+      .map((mytype) => mytype.name);
+    this.user.mytype= gotcha2;
 
-      const gotcha2 = this.$scope.mytypes
-        .filter((mytype) => mytype.ischecked)
-        .map((mytype) => mytype.name);
-      console.log(gotcha2);
-      this.user.mytype= gotcha2;
+    const gotcha3 = this.$scope.yourtypes
+      .filter((yourtype) => yourtype.ischecked)
+      .map((yourtype) => yourtype.name);
+    this.user.yourtype= gotcha3;
 
-      const gotcha3 = this.$scope.yourtypes
-        .filter((yourtype) => yourtype.ischecked)
-        .map((yourtype) => yourtype.name);
-      console.log(gotcha3);
-      this.user.yourtype= gotcha3;
+    if (form.$valid) {
+      const user = this.Auth.getCurrentUser();
 
-      if (form.$valid) {
-        const user = this.Auth.getCurrentUser();
-        //console.log(this.user.interests);
-        this.User.update({ id: user._id }, {
+      this.Upload.upload({
+        url: '/api/users/'+ user._id,
+        method: 'PUT',
+        data: {
           url: this.user.url, 
+          profileImage: this.user.profileImage,
           gender: this.user.gender, 
           interests: this.user.interests, 
           place: this.user.place, 
           mytype: this.user.mytype,
           yourtype: this.user.yourtype, 
           description: this.user.description 
-        }).$promise
-        .then(() => {
-          //this.$state.go('profile');
-          location.reload();
-        })
-        .catch(err => {
-          err = err.data;
-          this.errors = {};
+        }
+      })
+      .then(() => {
+        //this.$state.go('profile');
+        location.reload();
+      })
+      .catch(err => {
+        err = err.data;
+        this.errors = {};
 
-          // Update validity of form fields that match the mongoose errors
-          angular.forEach(err.errors, (error, field) => {
-            form[field].$setValidity('mongoose', false);
-            this.errors[field] = error.message;
-          });
+        // Update validity of form fields that match the mongoose errors
+        angular.forEach(err.errors, (error, field) => {
+          form[field].$setValidity('mongoose', false);
+          this.errors[field] = error.message;
         });
-      }
+      });
     }
   }
+}
 
-  angular.module('projectHeoApp')
-    .controller('ProfileController', ProfileController);
+angular.module('projectHeoApp')
+.controller('ProfileController', ProfileController);
 

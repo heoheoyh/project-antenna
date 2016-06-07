@@ -28,7 +28,7 @@ export function index(req, res) {
     .then(users => {
       res.status(200).json(users);
     })
-    .catch(handleError(res));
+  .catch(handleError(res));
 }
 
 /**
@@ -45,23 +45,29 @@ export function create(req, res, next) {
       });
       res.json({ token });
     })
-    .catch(validationError(res));
+  .catch(validationError(res));
 }
 
 export function update(req, res, next) {
-  //if (!req.body.url) { next(new Error('somthing went wrong...')); }
   let user = req.user;
-//  user.url = req.body.url;
-//  user.gender = req.body.gender;
-//  user.interests = req.body.interests;
-//  user.place = req.body.place;
-//  user.mytype= req.body.mytype;
-//  user.yourtype= req.body.yourtype;
-//  user.description = req.body.description;
-  user.set(req.body).save()
-  //user.save()
-    .then(() => res.status(204).send())
-    .catch(next);
+  console.log('file........................');
+  console.log(req.file);
+  console.log('body........................');
+  console.log(req.body);
+
+  if(req.file === undefined){
+    user.set(req.body).save()
+      .then(() => res.status(204).send())
+      .catch(next);
+  }
+  else{
+    req.body.profileImage = req.file.path;
+    user.set(req.body).save()
+      .then(() => res.status(204).send())
+      .catch(next);
+
+  }
+
 }
 
 /**
@@ -77,7 +83,7 @@ export function show(req, res, next) {
       }
       res.json(user.profile);
     })
-    .catch(err => next(err));
+  .catch(err => next(err));
 }
 
 /**
@@ -89,7 +95,7 @@ export function destroy(req, res) {
     .then(function() {
       res.status(204).end();
     })
-    .catch(handleError(res));
+  .catch(handleError(res));
 }
 
 /**
@@ -108,7 +114,7 @@ export function changePassword(req, res, next) {
           .then(() => {
             res.status(204).end();
           })
-          .catch(validationError(res));
+        .catch(validationError(res));
       } else {
         return res.status(403).end();
       }
@@ -128,7 +134,7 @@ export function me(req, res, next) {
       }
       res.json(user);
     })
-    .catch(err => next(err));
+  .catch(err => next(err));
 }
 
 /**

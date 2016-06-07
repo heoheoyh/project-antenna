@@ -6,7 +6,7 @@
       <h3>Edit Profile</h3>
     </div>
     <div class="col s12">
-      <form class="form" name="form" ng-submit="vm.editprofile(form)">
+      <form class="form" name="form" ng-submit="vm.editprofile(form)"  method="post" enctype="multipart/form-data" >
         <div class="row">
           <div class="input-field col s6">
             <span class="prefix">Name</span>
@@ -29,17 +29,15 @@
         <div class="file-field input-field">
           <div class="btn blue">
             <span>Upload</span>
-            <input type="file" ngf-select ng-model="picFile" name="file"    
-                                                             accept="image/*" ngf-max-size="2MB" required
-                                                                              ngf-model-invalid="errorFile">
-            <i ng-show="myForm.file.$error.required">*required</i><br>
+            <input type="file" ngf-select ng-model="vm.user.profileImage"  accept="image/*" ngf-max-size="2MB" ngf-model-invalid="errorFile">
             <i ng-show="myForm.file.$error.maxSize">File too large 
               {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
           </div>
           <div class="file-path-wrapper">
             <input class="file-path validate" type="text">
           </div>
-          <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="circle responsive-img"> <div class="chip" ng-click="picFile = null" ng-show="picFile">Remove</div>
+          <img ng-src={{vm.user.profileUrl}} class="circle responsive-img">
+          <img ng-show="myForm.file.$valid" ngf-thumbnail="vm.user.profileImage" class="circle responsive-img"> <div class="chip" ng-click="vm.user.profileImage = null" ng-show="vm.user.profileImage">Remove</div>
         </div>
         <div class="row">
           <div class="input-field col s12">

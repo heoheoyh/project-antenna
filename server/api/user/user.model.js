@@ -22,6 +22,7 @@ var UserSchema = new Schema({
   google: {},
   github: {},
   url: String,
+  profileImage: String,
   gender: String,
   interests: [],
   place: String,
