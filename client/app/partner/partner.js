@@ -7,6 +7,6 @@ angular.module('projectHeoApp')
         url: '/partner',
         templateUrl: 'app/partner/partner.html',
         controller: 'PartnerController',
-        controllerAs: 'partner' 
+        controllerAs: 'vm' 
       });
   });

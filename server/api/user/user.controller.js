@@ -55,18 +55,26 @@ export function update(req, res, next) {
   console.log('body........................');
   console.log(req.body);
 
-  if(req.file === undefined){
-    user.set(req.body).save()
-      .then(() => res.status(204).send())
-      .catch(next);
-  }
-  else{
+  if (req.file !== undefined) {
     req.body.profileImage = req.file.path;
-    user.set(req.body).save()
-      .then(() => res.status(204).send())
-      .catch(next);
-
   }
+
+  user.set(req.body).save()
+    .then(() => res.status(204).send())
+    .catch(next);
+//
+//  if(req.file === undefined){
+//    user.set(req.body).save()
+//      .then(() => res.status(204).send())
+//      .catch(next);
+//  }
+//  else{
+//    req.body.profileImage = req.file.path;
+//    user.set(req.body).save()
+//      .then(() => res.status(204).send())
+//      .catch(next);
+
+ // }
 
 }
 
