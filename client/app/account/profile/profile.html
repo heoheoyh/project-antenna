@@ -56,7 +56,7 @@
             <i>(choose your interests field)</i>
             <br>
             <span ng-repeat="item in items">
-              <input type="checkbox" class="filled-in" id="{{item.name}}" ng-model="item.ischecked" ng-value="item.name" ng-change="checkChanged(item)" ng-disabled="checkNum==limit && !item.ischecked"/>
+              <input type="checkbox" class="filled-in" id="{{item.name}}" ng-model="item.ischecked" ng-value="item.name" ng-disabled="areItemsOverflowed(items) && !item.ischecked"/>
               <label for="{{item.name}}">{{item.name}}</label>
             </span>
 
@@ -84,7 +84,7 @@
             <i>(choose My type)</i>
             <br>
             <span ng-repeat="mytype in mytypes">
-              <input type="checkbox" class="filled-in" id="{{mytype.name}}" ng-model="mytype.ischecked" ng-value="mytype.name" ng-change="checkChanged2(mytype)" ng-disabled="checkNum2==limit2 && !mytype.ischecked"/>
+              <input type="checkbox" class="filled-in" id="{{mytype.name}}" ng-model="mytype.ischecked" ng-value="mytype.name" ng-disabled="areItemsOverflowed(mytypes) && !mytype.ischecked"/>
               <label for="{{mytype.name}}">{{mytype.name}}</label>
             </span>
 
@@ -97,7 +97,7 @@
             <i>Choose Partner fields you want</i>
             <br>
             <span ng-repeat="yourtype in yourtypes">
-              <input type="checkbox" class="filled-in" id="{{yourtype.name}}" ng-model="yourtype.ischecked" ng-value="yourtype.name" ng-change="checkChanged3(yourtype)" ng-disabled="checkNum3==limit3 && !yourtype.ischecked"/>
+              <input type="checkbox" class="filled-in" id="{{yourtype.name}}" ng-model="yourtype.ischecked" ng-value="yourtype.name" ng-disabled="areItemsOverflowed(yourtypes) && !yourtype.ischecked"/>
               <label for="{{yourtype.name}}">{{yourtype.name}}</label>
             </span>
 

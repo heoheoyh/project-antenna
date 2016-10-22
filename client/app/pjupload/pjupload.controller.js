@@ -18,14 +18,15 @@ class PjuploadController {
       'three', 
       'four'
     ].map((v) => ({ name: v }));
-    $scope.limit = 3;
-    $scope.checkNum = 0;
-    $scope.checkChanged = function(item){
-      if(item.ischecked) $scope.checkNum++;
-      else $scope.checkNum--;
-      console.log($scope.checkNum)
-    }
 
+    const Checker = (limit) => {
+      return (items) => {
+        const itemNum = items.filter((item) => item.ischecked).length;
+        return itemNum === limit;
+      };
+    };
+
+    $scope.ItemsOver = Checker(3);
   }
 
   upload(form) {

@@ -275,12 +275,18 @@ module.exports = function (grunt) {
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>/<%= yeoman.client %>',
-          '<%= yeoman.dist %>/<%= yeoman.client %>/assets/images'
+          '<%= yeoman.dist %>/<%= yeoman.client %>/assets/images',
+          '<%= yeoman.dist %>/<%= yeoman.client %>/assets/fonts',
         ],
         // This is so we update image references in our ng-templates
         patterns: {
           js: [
-            [/(assets\/images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']
+            [/(assets\/images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images'],
+            [/(assets\/fonts\/.*?\.(?:eot|ttf|woff|woff2))/gm, 'Update the JS to reference our revved fonts'],
+          ],
+          css: [
+            [/(assets\/images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the CSS to reference our revved images'],
+            [/(assets\/fonts\/.*?\.(?:eot|ttf|woff|woff2))/gm, 'Update the CSS to reference our revved fonts'],
           ]
         }
       }
@@ -391,7 +397,15 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>',
           src: [
             'package.json',
+            'Procfile',
             '<%= yeoman.server %>/**/*'
+          ]
+        }, {
+          expand: true,
+          cwd: '<%= yeoman.client %>/bower_components/materialize/fonts',
+          dest: '<%= yeoman.dist %>/client/assets/fonts',
+          src: [
+            '**/*',
           ]
         }]
       },
@@ -413,13 +427,7 @@ module.exports = function (grunt) {
       },
       heroku: {
         options: {
-          remote: 'heroku',
-          branch: 'master'
-        }
-      },
-      openshift: {
-        options: {
-          remote: 'openshift',
+          remote: 'https://git.heroku.com/project-antenna.git',
           branch: 'master'
         }
       }
@@ -648,6 +656,20 @@ module.exports = function (grunt) {
         }
       }
     },
+
+    replace: {
+      vendorAssets: {
+        options: {
+          patterns: [{
+            match: /\.\.\/fonts\/roboto/g,
+            replacement: '../assets/fonts/roboto',
+          }]
+        },
+        files: [
+          { expand: true, cwd: '<%= yeoman.dist %>/client/app/', src: ['*.css'], dest: '<%= yeoman.dist %>/client/app' }
+        ]  
+      } 
+    },
   });
 
   // Used for delaying livereload until after server has restarted
@@ -813,7 +835,13 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'filerev',
-    'usemin'
+    'usemin',
+    'replace:vendorAssets'
+  ]);
+
+  grunt.registerTask('deploy', [
+    'build',
+    'buildcontrol:heroku'
   ]);
 
   grunt.registerTask('default', [

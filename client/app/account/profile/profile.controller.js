@@ -21,37 +21,29 @@ class ProfileController {
       'three', 
       'four'
     ].map((v) => ({ name: v }));
-    $scope.limit = 3;
-    $scope.checkNum = 0;
-    $scope.checkChanged = function(item){
-      if(item.ischecked) $scope.checkNum++;
-      else $scope.checkNum--;
-    }
+  
+    const genOverflowChecker = (limit) => {
+      return (items) => {
+        const itemNum = items.filter((item) => item.ischecked).length;
+        return itemNum === limit;
+      }; 
+    };
+
+    $scope.areItemsOverflowed = genOverflowChecker(3);
+
     $scope.mytypes = [
       'good', 
       'bad', 
       'sad', 
       'joy'
     ].map((v) => ({ name: v }));
-    $scope.limit2 = 3;
-    $scope.checkNum2 = 0;
-    $scope.checkChanged2 = function(mytype){
-      if(mytype.ischecked) $scope.checkNum2++;
-      else $scope.checkNum2--;
-    }
+
     $scope.yourtypes = [
       'developer', 
       'designer', 
       'business', 
       'manager'
     ].map((v) => ({ name: v }));
-    $scope.limit3 = 3;
-    $scope.checkNum3 = 0;
-    $scope.checkChanged3 = function(yourtype){
-      if(yourtype.ischecked) $scope.checkNum3++;
-      else $scope.checkNum3--;
-    }
-
 
     $scope.items =  $scope.items.map((item) => {
       item.ischecked = Auth.getCurrentUser().interests.indexOf(item.name) >= 0;
@@ -74,7 +66,7 @@ class ProfileController {
       url: Auth.getCurrentUser().url,
       profileUrl: Auth.getCurrentUser().profileImage,
       gender: Auth.getCurrentUser().gender,
-      interests: Auth.getCurrentUser().interests,
+      //interests: Auth.getCurrentUser().interests,
       place: Auth.getCurrentUser().place,
       mytype: Auth.getCurrentUser().mytype,
       yourtype: Auth.getCurrentUser().yourtype,

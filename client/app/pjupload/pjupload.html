@@ -19,7 +19,7 @@
             <i>(choose field you want)</i>
             <br>
             <span ng-repeat="item in items">
-            <input type="checkbox" class="filled-in" id="{{item.name}}" ng-model="item.ischecked" ng-value="item.name" ng-change="checkChanged(item)" ng-disabled="checkNum==limit && !item.ischecked"/>
+            <input type="checkbox" class="filled-in" id="{{item.name}}" ng-model="item.ischecked" ng-value="item.name" ng-disabled="ItemsOver(items) && !item.ischecked"/>
             <label for="{{item.name}}">{{item.name}}</label>
             </span>
           </div>

@@ -20,17 +20,20 @@ class PjupdateController {
       'three', 
       'four'
     ].map((v) => ({ name: v }));
-    $scope.limit = 3;
-    $scope.checkNum = 0;
-    $scope.checkChanged = function(item){
-      if(item.ischecked) $scope.checkNum++;
-      else $scope.checkNum--;
-      console.log($scope.checkNum)
-    }
+
+    const Checker = (limit) => {
+      return (items) => {
+        const itemNum = items.filter((item) => item.ischecked).length;
+        return itemNum === limit;
+      };
+    };
+
+    $scope.ItemsOver = Checker(3);
+
     this.Project.get({ id: $stateParams.mypjId}).$promise
       .then((res) => {
         this.pjupdate = res;
-       $scope.items =  $scope.items.map((item) => {
+        $scope.items =  $scope.items.map((item) => {
           item.ischecked = this.pjupdate.field.indexOf(item.name) >= 0;
           return item;
         });
