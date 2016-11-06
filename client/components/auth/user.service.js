@@ -12,6 +12,9 @@ function UserResource($resource) {
         controller: 'password'
       }
     },
+    query: {
+      method:'GET', isArray:true
+    },
     get: {
       method: 'GET',
       params: {

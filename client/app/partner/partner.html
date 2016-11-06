@@ -4,6 +4,38 @@
     <div class="col s12">
       <h3>Partner</h3>
     </div>
+
+    <div class="col s12 m8 offset-m2 l6 offset-l3">
+      <div class="card-panel grey lighten-5 z-depth-1">
+        <div class="row valign-wrapper">
+          <div class="col s2">
+            <img ng-src={{my.profileImage}} alt="" class="circle responsive-img" id="myImg"> <!-- notice the "circle" class -->
+          </div>
+          <div class="col s10">
+            <span class="black-text">
+              {{my.name}}님의 분야는 <strong>{{my.myField.join(', ')}}</strong>이며 원하시는 파트너의 분야는<strong> {{my.partnerField.join(', ')}}</strong>입니다
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+      <div class="col s11" ng-repeat="x in partner">
+        <hr>
+         <p>파트너 추천 결과입니다</p>
+        <ul class="collection">
+          <li class="collection-item avatar">
+            <img ng-src={{x.profileImage}} alt="" class="circle">
+            <span class="title">이름: {{x.name}}</span>
+            <p>파트너의 분야: {{x.myField.join(', ')}} <br>
+            파트너가 원하는 분야: {{x.partnerField.join(', ')}}
+            </p>
+            <p>한마디: {{x.description}}</p>
+            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+          </li>
+        </ul>
+      </div>
+
   </div>
 </div>
 

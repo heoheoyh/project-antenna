@@ -39,7 +39,12 @@ angular.module('projectHeoApp')
     templateUrl: 'app/account/profile/profile.html',
     controller: 'ProfileController',
     controllerAs: 'vm',
-    authenticate: true
+    authenticate: true,
+    resolve: {
+      user(Auth) {
+        return Auth.getCurrentUser(null); 
+      } 
+    },
   });
 })
 .run(function($rootScope) {

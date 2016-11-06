@@ -7,21 +7,35 @@ class ProfileController {
   submitted = false;
   //end-non-standard
 
-  constructor(Auth, $state, $scope, $log, User, Upload) {
+  constructor(Auth, $state, $scope, $log, User, Upload, user) {
     this.User = User;
     this.Auth = Auth;
     this.$state = $state;
     this.$log = $log;
     this.$scope = $scope;
     this.Upload = Upload;
+    this.user = user;
+
+    this.user={
+      name: user.name, 
+      email: user.email,
+      url: user.url,
+      profileUrl: user.profileImage,
+      gender: user.gender,
+      myField: user.myField,
+      place: user.place,
+      mytype: user.mytype,
+      partnerField: user.partnerField,
+      description: user.description
+    };
 
     $scope.items = [
-      'one', 
-      'two', 
-      'three', 
-      'four'
+      'developer', 
+      'designer', 
+      'business', 
+      'manager'
     ].map((v) => ({ name: v }));
-  
+
     const genOverflowChecker = (limit) => {
       return (items) => {
         const itemNum = items.filter((item) => item.ischecked).length;
@@ -38,7 +52,7 @@ class ProfileController {
       'joy'
     ].map((v) => ({ name: v }));
 
-    $scope.yourtypes = [
+    $scope.partnerField = [
       'developer', 
       'designer', 
       'business', 
@@ -46,32 +60,20 @@ class ProfileController {
     ].map((v) => ({ name: v }));
 
     $scope.items =  $scope.items.map((item) => {
-      item.ischecked = Auth.getCurrentUser().interests.indexOf(item.name) >= 0;
+      item.ischecked = this.user.myField.indexOf(item.name) >= 0;
       return item;
     });
 
     $scope.mytypes =  $scope.mytypes.map((mytype) => {
-      mytype.ischecked = Auth.getCurrentUser().mytype.indexOf(mytype.name) >= 0;
+      mytype.ischecked = this.user.mytype.indexOf(mytype.name) >= 0;
       return mytype;
     });
 
-    $scope.yourtypes =  $scope.yourtypes.map((yourtype) => {
-      yourtype.ischecked = Auth.getCurrentUser().yourtype.indexOf(yourtype.name) >= 0;
-      return yourtype;
+    $scope.partnerField =  $scope.partnerField.map((partnerField) => {
+      partnerField.ischecked = this.user.partnerField.indexOf(partnerField.name) >= 0;
+      return partnerField;
     });
 
-    this.user={
-      name: Auth.getCurrentUser().name, 
-      email: Auth.getCurrentUser().email,
-      url: Auth.getCurrentUser().url,
-      profileUrl: Auth.getCurrentUser().profileImage,
-      gender: Auth.getCurrentUser().gender,
-      //interests: Auth.getCurrentUser().interests,
-      place: Auth.getCurrentUser().place,
-      mytype: Auth.getCurrentUser().mytype,
-      yourtype: Auth.getCurrentUser().yourtype,
-      description: Auth.getCurrentUser().description
-    };
     $scope.uploadPic = function(file) {
       file.upload = Upload.upload({
         url: 'client/app/upload',
@@ -111,7 +113,6 @@ class ProfileController {
         places_changed: (searchBox) => {
           const place = searchBox.getPlaces()[0];
           this.user.place = place.name;
-          console.log(this.user);
           console.log("lat: " + place.geometry.location.lat());
           console.log("lng: " + place.geometry.location.lng());
           $scope.map.center = {
@@ -132,53 +133,51 @@ class ProfileController {
     const gotcha = this.$scope.items
       .filter((item) => item.ischecked)
       .map((item) => item.name);
-    this.user.interests= gotcha;
+    this.user.myField= gotcha;
 
     const gotcha2 = this.$scope.mytypes
       .filter((mytype) => mytype.ischecked)
       .map((mytype) => mytype.name);
     this.user.mytype= gotcha2;
 
-    const gotcha3 = this.$scope.yourtypes
-      .filter((yourtype) => yourtype.ischecked)
-      .map((yourtype) => yourtype.name);
-    this.user.yourtype= gotcha3;
+    const gotcha3 = this.$scope.partnerField
+      .filter((partnerField) => partnerField.ischecked)
+      .map((partnerField) => partnerField.name);
+    this.user.partnerField= gotcha3;
 
     if (form.$valid) {
-      const user = this.Auth.getCurrentUser();
-
       this.Upload.upload({
-        url: '/api/users/'+ user._id,
+        url: '/api/users/'+ this.user._id,
         method: 'PUT',
         data: {
           url: this.user.url, 
           profileImage: this.user.profileImage,
           gender: this.user.gender, 
-          interests: this.user.interests, 
+          myField: this.user.myField, 
           place: this.user.place, 
           mytype: this.user.mytype,
-          yourtype: this.user.yourtype, 
+          partnerField: this.user.partnerField, 
           description: this.user.description 
         }
       })
-      .then(() => {
-        //this.$state.go('profile');
-        location.reload();
-      })
-      .catch(err => {
-        err = err.data;
-        this.errors = {};
+        .then(() => {
+          //this.$state.go('profile');
+          location.reload();
+        })
+        .catch(err => {
+          err = err.data;
+          this.errors = {};
 
-        // Update validity of form fields that match the mongoose errors
-        angular.forEach(err.errors, (error, field) => {
-          form[field].$setValidity('mongoose', false);
-          this.errors[field] = error.message;
+          // Update validity of form fields that match the mongoose errors
+          angular.forEach(err.errors, (error, field) => {
+            form[field].$setValidity('mongoose', false);
+            this.errors[field] = error.message;
+          });
         });
-      });
     }
   }
 }
 
 angular.module('projectHeoApp')
-.controller('ProfileController', ProfileController);
+  .controller('ProfileController', ProfileController);
 

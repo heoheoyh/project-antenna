@@ -24,11 +24,11 @@ var UserSchema = new Schema({
   url: String,
   profileImage: String,
   gender: String,
-  interests: [],
+  myField: [],
   place: String,
   mytype: [],
-  yourtype: [],
-  description: String,
+  partnerField: [],
+  description: String
 });
 
 /**

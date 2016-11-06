@@ -19,6 +19,22 @@ function handleError(res, statusCode) {
   };
 }
 
+export function all(req, res) {
+  let myfield = req.user.myField;
+  let partnerfield = req.user.partnerField;
+  console.log(myfield);
+  console.log(partnerfield);
+
+  User.find({ 
+    myField:{$in: partnerfield},
+    partnerField: {$in: myfield}
+  })
+  .then(users => {
+    res.status(200).json(users);
+  })
+  .catch(handleError(res));
+}
+
 /**
  * Get list of users
  * restriction: 'admin'

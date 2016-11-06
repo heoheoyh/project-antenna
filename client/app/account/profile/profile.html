@@ -52,12 +52,12 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <span>Interests</span>
-            <i>(choose your interests field)</i>
+            <span>My Fields</span>
+            <i>(choose My fields)</i>
             <br>
             <span ng-repeat="item in items">
-              <input type="checkbox" class="filled-in" id="{{item.name}}" ng-model="item.ischecked" ng-value="item.name" ng-disabled="areItemsOverflowed(items) && !item.ischecked"/>
-              <label for="{{item.name}}">{{item.name}}</label>
+              <input type="checkbox" class="filled-in" name="myfield" id="mfield-{{item.name}}" ng-model="item.ischecked" ng-value="item.name" ng-disabled="areItemsOverflowed(items) && !item.ischecked"/>
+              <label for="mfield-{{item.name}}">{{item.name}}</label>
             </span>
 
           </div>
@@ -66,7 +66,7 @@
           <div class="col s12">
             <span>Location</span>
             <div id="searchBoxParent"></div>
-            <div id="map_canvas" ng-controller="ProfileController">
+            <div id="map_canvas">
               <script type="text/ng-template" id="searchbox.tpl.html">
 <input type="text" placeholder="Search Box" ng-model="ngModel"> 
               </script>
@@ -96,9 +96,9 @@
             <span>Partner Fields</span>
             <i>Choose Partner fields you want</i>
             <br>
-            <span ng-repeat="yourtype in yourtypes">
-              <input type="checkbox" class="filled-in" id="{{yourtype.name}}" ng-model="yourtype.ischecked" ng-value="yourtype.name" ng-disabled="areItemsOverflowed(yourtypes) && !yourtype.ischecked"/>
-              <label for="{{yourtype.name}}">{{yourtype.name}}</label>
+            <span ng-repeat="pfield in partnerField">
+              <input type="checkbox" class="filled-in" name="partnerfield" id="pfield-{{pfield.name}}" ng-model="pfield.ischecked" ng-value="pfield.name" ng-disabled="areItemsOverflowed(partnerField) && ! pfield.ischecked"/>
+              <label for="pfield-{{pfield.name}}">{{pfield.name}}</label>
             </span>
 
 
