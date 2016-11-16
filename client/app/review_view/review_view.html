@@ -2,29 +2,34 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
-      <h3>Project View</h3>
+      <h3>Review View</h3>
     </div>
     <table class="bordered">
       <tbody>
         <tr>
           <th data-field="title">Title</th>
-          <td>{{vm.pjview.title}}</td>
+          <td>{{vm.rvview.title}}</td>
         </tr>
         <tr>
           <th data-field="name">Name</th>
-          <td>{{vm.pjview._creator.name}} <img ng-src={{vm.pjview._creator.profileImage}} alt="" class="circle responsive-img" id="viewpic"> </td>
+          <td>{{vm.rvview._creator.name}} <img ng-src={{vm.rvview._creator.profileImage}} alt="" class="circle responsive-img" id="viewpic"> </td>
         </tr>
         <tr>
           <th data-field="field">Field</th>
-          <td>{{vm.pjview.field.join(' ')}}</td>
+          <td>{{vm.rvview.field.join(' ')}}</td>
         </tr>
         <tr>
+          <th data-field="tags">Tags</th>
+          <td ng-repeat="tag in vm.rvview.tags" id="tag_display"><div class="chip">{{tag}}</div></td>
+        </tr>
+
+        <tr>
           <th data-field="link">Link</th>
-          <td><a href="{{vm.pjview.link}}" target="_blank">{{vm.pjview.link}}</a></td>
+          <td><a href="{{vm.rvview.link}}" target="_blank">{{vm.rvview.link}}</a></td>
         </tr>
         <tr id="content_box">
           <th data-field="content">Content</th>
-          <td>{{vm.pjview.content}}</td>
+          <td>{{vm.rvview.content}}</td>
         </tr>
       </tbody>
 

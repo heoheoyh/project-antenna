@@ -12,6 +12,7 @@ var upload = multer({ dest: './uploads' })
 router.get('/', auth.isAuthenticated(),  controller.all);
 router.get('/', auth.hasRole('admin'), controller.index);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);
+//router.get('/', auth.isAuthenticated(),  controller.all);
 
 router.get('/me', auth.isAuthenticated(), controller.me);
 router.put('/:id', auth.isAuthenticated(),upload.single('profileImage'), controller.update);

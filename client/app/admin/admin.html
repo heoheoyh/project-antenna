@@ -1,14 +1,20 @@
 <navbar></navbar>
 
 <div class="container">
-  <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
-  <ul class="list-group user-list">
-    <li class="list-group-item" ng-repeat="user in admin.users">
-	    <div class="user-info">
-	        <strong>{{user.name}}</strong><br>
-	        <span class="text-muted">{{user.email}}</span>
-	    </div>
-        <a ng-click="admin.delete(user)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
-    </li>
-  </ul>
-</div>
+  <div class="row">
+    <div class="col s12">
+      <h3> Admin </h3>
+    </div>
+    <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
+    <ul class="collection">
+      <li class="collection-item avatar" ng-repeat="user in admin.users">
+        <img src={{user.profileImage}} alt="" class="circle">
+        <span class="name"><strong>{{user.name}}</strong><span><br>
+            <p>{{user.email}}<br>
+            {{user.myField}}
+            </p>
+            <a ng-click="admin.delete(user)" class="secondary-content"><i class="material-icons">delete</i></a>
+      </li>
+    </ul>
+  </div>
+  </diV>

@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
-      <h3>Project List</h3>
+      <h3>Review List</h3>
     </div>
     <table id="list_table" class="bordered centered">
       <thead>
@@ -16,18 +16,18 @@
       </thead>
 
       <tbody>
-        <tr ng-repeat="x in pjlist"  >
+        <tr ng-repeat="x in rvlist"  >
           <td> {{$index + 1}} </td>
-          <td><a ui-sref="pjview({ pid: x._id })"> {{x.title}}</a></td>
+          <td><a ui-sref="review_view({ pid: x._id })"> {{x.title}}</a></td>
           <td>{{x.field.join(' ')}}</td>
           <td>{{x._creator.name}} </td>
           <td>{{x.date | date:'yyyy-MM-dd HH:mm'}}</td>
         </tr>
       </tbody>
     </table>
-  </div>
-  <a href="mypjlist"><button class="btn waves-effect waves-lignt blue right">My Project</button></a>
-</div>
 
+  </div>
+  <a href="myreview"><button class="btn waves-effect waves-lignt blue right">My Review</button></a>
+</div>
 
 <footer class="page-footer grey darken-4"></footer>

@@ -8,10 +8,17 @@ import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
 import Project from '../api/project/project.model';
 
+import Review from '../api/review/review.model';
+
 Project.remove({})
   .then(() => {
     console.log('finished removing projects');
   });
+
+Review.remove({})
+  .then(() => {
+    console.log('finished removing reviews');}
+  );
 
 Thing.find({}).removeAsync()
   .then(() => {

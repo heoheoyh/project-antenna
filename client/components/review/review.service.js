@@ -2,8 +2,8 @@
 
 (function(angular) {
 
-  function ProjectResource($resource) {
-    return $resource('/api/projects/:id', { id: '@_id' }, {
+  function ReviewResource($resource) {
+    return $resource('/api/reviews/:id', { id: '@_id' }, {
       'save':   {
         method:'POST'
       },
@@ -29,6 +29,6 @@
   }
 
   angular.module('projectHeoApp.auth')
-    .factory('Project', ProjectResource);
+    .factory('Review', ReviewResource);
 
 })(angular);

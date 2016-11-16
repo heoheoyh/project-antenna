@@ -20,11 +20,15 @@
 @import 'account/profile/profile.scss';
 @import 'admin/admin.scss';
 @import 'main/main.scss';
+@import 'myreview/myreview.scss';
 @import 'partner/partner.scss';
 @import 'pjlist/pjlist.scss';
-@import 'pjreview/pjreview.scss';
 @import 'pjupload/pjupload.scss';
 @import 'pjview/pjview.scss';
+@import 'review_list/review_list.scss';
+@import 'review_update/review_update.scss';
+@import 'review_upload/review_upload.scss';
+@import 'review_view/review_view.scss';
 @import '../components/footer/footer.scss';
 @import '../components/modal/modal.scss';
 @import '../components/oauth-buttons/oauth-buttons.scss';

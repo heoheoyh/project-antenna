@@ -24,8 +24,8 @@
         <hr>
          <p>파트너 추천 결과입니다</p>
         <ul class="collection">
-          <li class="collection-item avatar">
-            <img ng-src={{x.profileImage}} alt="" class="circle">
+           <li class="collection-item avatar" style="padding-left:125px;">
+            <img ng-src={{x.profileImage}} alt="" class="circle" id="partnerImg">
             <span class="title">이름: {{x.name}}</span>
             <p>파트너의 분야: {{x.myField.join(', ')}} <br>
             파트너가 원하는 분야: {{x.partnerField.join(', ')}}

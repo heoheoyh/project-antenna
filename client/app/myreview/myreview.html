@@ -1,0 +1,33 @@
+<navbar></navbar>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h3>My Review</h3>
+    </div>
+    <table id="list_table" class="bordered centered">
+      <thead>
+        <tr>
+          <th data-field="index">No</th>
+          <th data-field="id">Title</th>
+          <th data-field="date">Date</th>
+          <th data-field="update">Update</th>
+          <th data-field="delete">Delete</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="y in myreview" >
+          <td> {{$index + 1}} </td>
+          <td>{{y.title}}</td>
+          <td>{{y.date | date:'yyyy-MM-dd HH:mm'}}</td>
+          <td><a ui-sref="review_update({ myrvId: y._id })">Update</a></td>
+          <td><a ui-sref="review_delete({ myrvId: y._id })">Delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <a href="review_upload"><button class="btn waves-effect waves-lignt blue right">Review Upload</button></a>
+</div>
+
+<footer class="page-footer grey darken-4"></footer>

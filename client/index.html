@@ -15,6 +15,7 @@
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/Materialize/bin/materialize.css" />
       <link rel="stylesheet" href="bower_components/materialize/bin/materialize.css" />
+      <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -67,6 +68,7 @@
       <script src="bower_components/checklist-model/checklist-model.js"></script>
       <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
       <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+      <script src="bower_components/ng-tags-input/ng-tags-input.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -76,7 +78,7 @@
       <script src="app/admin/admin.module.js"></script>
       <script src="components/auth/auth.module.js"></script>
       <script src="components/util/util.module.js"></script>
-      <script src="app/pjupdate/pjupdate.controller.js"></script>
+      <script src="app/pjview/pjview.js"></script>
       <script src="app/account/signup/signup.controller.js"></script>
       <script src="app/admin/admin.controller.js"></script>
       <script src="app/account/account.js"></script>
@@ -86,20 +88,28 @@
       <script src="app/main/main.js"></script>
       <script src="app/mypjlist/mypjlist.controller.js"></script>
       <script src="app/mypjlist/mypjlist.js"></script>
+      <script src="app/myreview/myreview.controller.js"></script>
+      <script src="app/myreview/myreview.js"></script>
       <script src="app/partner/partner.controller.js"></script>
       <script src="app/partner/partner.js"></script>
       <script src="app/pjdelete/pjdelete.controller.js"></script>
       <script src="app/pjdelete/pjdelete.js"></script>
       <script src="app/pjlist/pjlist.controller.js"></script>
       <script src="app/pjlist/pjlist.js"></script>
-      <script src="app/pjreview/pjreview.controller.js"></script>
-      <script src="app/pjreview/pjreview.js"></script>
-      <script src="app/account/login/login.controller.js"></script>
+      <script src="app/pjupdate/pjupdate.controller.js"></script>
       <script src="app/pjupdate/pjupdate.js"></script>
       <script src="app/pjupload/pjupload.controller.js"></script>
       <script src="app/pjupload/pjupload.js"></script>
       <script src="app/pjview/pjview.controller.js"></script>
-      <script src="app/pjview/pjview.js"></script>
+      <script src="app/account/login/login.controller.js"></script>
+      <script src="app/review_list/review_list.controller.js"></script>
+      <script src="app/review_list/review_list.js"></script>
+      <script src="app/review_update/review_update.controller.js"></script>
+      <script src="app/review_update/review_update.js"></script>
+      <script src="app/review_upload/review_upload.controller.js"></script>
+      <script src="app/review_upload/review_upload.js"></script>
+      <script src="app/review_view/review_view.controller.js"></script>
+      <script src="app/review_view/review_view.js"></script>
       <script src="app/account/profile/profile.controller.js"></script>
       <script src="components/auth/auth.service.js"></script>
       <script src="components/auth/interceptor.service.js"></script>
@@ -112,7 +122,9 @@
       <script src="components/navbar/navbar.directive.js"></script>
       <script src="components/oauth-buttons/oauth-buttons.controller.js"></script>
       <script src="components/oauth-buttons/oauth-buttons.directive.js"></script>
+      <script src="components/partner/partner.service.js"></script>
       <script src="components/project/project.service.js"></script>
+      <script src="components/review/review.service.js"></script>
       <script src="components/socket/socket.service.js"></script>
       <script src="app/account/settings/settings.controller.js"></script>
       <script src="components/util/util.service.js"></script>

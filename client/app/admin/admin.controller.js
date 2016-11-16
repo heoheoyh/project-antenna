@@ -3,9 +3,14 @@
 (function() {
 
 class AdminController {
-  constructor(User) {
+  constructor(User,$scope) {
     // Use the User $resource to fetch all users
     this.users = User.query();
+//   this.User.query().$promise
+//      .then((res) => {
+//        $scope.admin = res;
+//      });
+
   }
 
   delete(user) {

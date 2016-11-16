@@ -19,22 +19,27 @@ function handleError(res, statusCode) {
   };
 }
 
-export function all(req, res) {
-  let myfield = req.user.myField;
-  let partnerfield = req.user.partnerField;
-  console.log(myfield);
-  console.log(partnerfield);
+export function all(req, res, next) {
+  if(req.user.role == 'admin'){
+    next();
+  }
+  else{
+    let myfield = req.user.myField;
+    let partnerfield = req.user.partnerField;
+    console.log(myfield);
+    console.log(partnerfield);
 
-  User.find({ 
-    myField:{$in: partnerfield},
-    partnerField: {$in: myfield}
-  })
-  .then(users => {
-    res.status(200).json(users);
-  })
-  .catch(handleError(res));
+    User.find({ 
+      myField:{$in: partnerfield},
+      partnerField: {$in: myfield}
+    })
+      .then(users => {
+        res.status(200).json(users);
+      })
+      .catch(handleError(res));
+  }
 }
-
+//
 /**
  * Get list of users
  * restriction: 'admin'
@@ -44,7 +49,7 @@ export function index(req, res) {
     .then(users => {
       res.status(200).json(users);
     })
-  .catch(handleError(res));
+    .catch(handleError(res));
 }
 
 /**
@@ -61,7 +66,7 @@ export function create(req, res, next) {
       });
       res.json({ token });
     })
-  .catch(validationError(res));
+    .catch(validationError(res));
 }
 
 export function update(req, res, next) {
@@ -78,19 +83,19 @@ export function update(req, res, next) {
   user.set(req.body).save()
     .then(() => res.status(204).send())
     .catch(next);
-//
-//  if(req.file === undefined){
-//    user.set(req.body).save()
-//      .then(() => res.status(204).send())
-//      .catch(next);
-//  }
-//  else{
-//    req.body.profileImage = req.file.path;
-//    user.set(req.body).save()
-//      .then(() => res.status(204).send())
-//      .catch(next);
+  //
+  //  if(req.file === undefined){
+  //    user.set(req.body).save()
+  //      .then(() => res.status(204).send())
+  //      .catch(next);
+  //  }
+  //  else{
+  //    req.body.profileImage = req.file.path;
+  //    user.set(req.body).save()
+  //      .then(() => res.status(204).send())
+  //      .catch(next);
 
- // }
+  // }
 
 }
 
@@ -107,7 +112,7 @@ export function show(req, res, next) {
       }
       res.json(user.profile);
     })
-  .catch(err => next(err));
+    .catch(err => next(err));
 }
 
 /**
@@ -119,7 +124,7 @@ export function destroy(req, res) {
     .then(function() {
       res.status(204).end();
     })
-  .catch(handleError(res));
+    .catch(handleError(res));
 }
 
 /**
@@ -138,7 +143,7 @@ export function changePassword(req, res, next) {
           .then(() => {
             res.status(204).end();
           })
-        .catch(validationError(res));
+          .catch(validationError(res));
       } else {
         return res.status(403).end();
       }
@@ -158,7 +163,7 @@ export function me(req, res, next) {
       }
       res.json(user);
     })
-  .catch(err => next(err));
+    .catch(err => next(err));
 }
 
 /**

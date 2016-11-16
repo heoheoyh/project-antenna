@@ -4,7 +4,8 @@ class PartnerController {
 
   partner = {};
 
-  constructor(User, $scope) {
+  constructor(Partner,User, $scope) {
+    this.Partner = Partner;
     this.User = User;
     this.$scope = $scope;
 
