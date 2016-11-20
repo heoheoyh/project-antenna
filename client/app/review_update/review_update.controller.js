@@ -1,6 +1,6 @@
 'use strict';
 
-class Review_updateController {
+class ReviewUpdateController {
   //start-non-standard
   review_update = {};
   errors = {};
@@ -87,6 +87,6 @@ class Review_updateController {
 }
 
 angular.module('projectHeoApp')
-.controller('Review_updateController', Review_updateController);
+.controller('ReviewUpdateController', ReviewUpdateController);
 
 

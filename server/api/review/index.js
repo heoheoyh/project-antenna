@@ -9,6 +9,7 @@ var router = new Router();
 router.get('/', controller.index);
 
 router.get('/mine', auth.isAuthenticated(), controller.mine);
+router.get('/get-tags', controller.getTags);
 router.put('/:myrvId', auth.isAuthenticated(), controller.update);
 router.delete('/:myrvId', auth.isAuthenticated(), controller.del);
 router.get('/:pid', controller.show);

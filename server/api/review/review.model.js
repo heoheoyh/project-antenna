@@ -13,4 +13,6 @@ var ReviewSchema = new Schema({
   date     : { type: Date,  default: Date.now   }
 });
 
+ReviewSchema.index( { tags: "text" } )
+
 export default mongoose.model('Review', ReviewSchema);

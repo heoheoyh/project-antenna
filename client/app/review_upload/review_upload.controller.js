@@ -32,12 +32,20 @@ class ReviewUploadController {
       'taga'
     ];
  
-    $scope.loadTags = function(query) {
-      return this.Review.query().$promise;
-     // $http.get('/tags?query=' + query);
+    
+    $scope.loadTags = (query) => {
+    //  return this.Review.query().$promise
+     // .then((res) => {
+        
+       //$scope.tags = res.tags;
+        //console.log(res);
+     // });
+      return $http.get('/api/reviews/get-tags', { 
+        params: { q: query }
+      });
     };
 
-
+    
   }
 
   upload(form) {

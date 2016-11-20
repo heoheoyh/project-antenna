@@ -1,0 +1,41 @@
+<navbar></navbar>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h3>Review Delete</h3>
+    </div>
+    <table class="bordered">
+      <tbody>
+        <tr>
+          <th data-field="title">Title</th>
+          <td>{{vm.rvdelete.title}}</td>
+        </tr>
+        <tr>
+          <th data-field="name">Name</th>
+          <td>{{vm.rvdelete._creator.name}}</td>
+        </tr>
+        <tr>
+          <th data-field="field">Field</th>
+          <td>{{vm.rvdelete.field}}</td>
+        </tr>
+        <tr>
+          <th data-field="link">Link</th>
+          <td><a href="{{vm.rvdelete.link}}" target="_blank">{{vm.rvdelete.link}}</a></td>
+        </tr>
+        <tr id="content_box">
+          <th data-field="content">Content</th>
+          <td>{{vm.rvdelete.content}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <button class="btn waves-effect waves-light blue right" id="delbtn" ng-click="vm.del()">Delete
+      <i class="material-icons right">send</i>
+    </button>
+
+  </div>
+
+</div>
+
+
+<footer class="page-footer grey darken-4"></footer>
