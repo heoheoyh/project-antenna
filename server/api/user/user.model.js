@@ -25,7 +25,8 @@ var UserSchema = new Schema({
   profileImage: String,
   gender: String,
   myField: [],
-  place: String,
+  local: String,
+  state: String,
   mytype: [],
   partnerField: [],
   description: String

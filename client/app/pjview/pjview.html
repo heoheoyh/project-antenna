@@ -18,6 +18,11 @@
           <th data-field="field">Field</th>
           <td>{{vm.pjview.field.join(' ')}}</td>
         </tr>
+   <tr>
+          <th data-field="tags">Tags</th>
+          <td ng-repeat="tag in vm.pjview.tags" id="tag_display"><div class="chip">{{tag}}</div></td>
+        </tr>
+
         <tr>
           <th data-field="link">Link</th>
           <td><a href="{{vm.pjview.link}}" target="_blank">{{vm.pjview.link}}</a></td>

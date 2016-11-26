@@ -7,7 +7,7 @@ class ProfileController {
   submitted = false;
   //end-non-standard
 
-  constructor(Auth, $state, $scope, $log, User, Upload, user) {
+  constructor(Auth, $state, $scope, $log, User, Upload, user,$http) {
     this.User = User;
     this.Auth = Auth;
     this.$state = $state;
@@ -15,6 +15,7 @@ class ProfileController {
     this.$scope = $scope;
     this.Upload = Upload;
     this.user = user;
+    this.$http = $http;
 
     this.user={
       name: user.name, 
@@ -23,7 +24,8 @@ class ProfileController {
       profileUrl: user.profileImage,
       gender: user.gender,
       myField: user.myField,
-      place: user.place,
+      local: user.local,
+      state: user.state,
       mytype: user.mytype,
       partnerField: user.partnerField,
       description: user.description
@@ -80,70 +82,56 @@ class ProfileController {
         data: { file: file},
       })};
 
-    $scope.map = {
-      center: {
-        latitude: 50.6278,
-        longitude: 3.0583
-      },
-      zoom: 16,
-      markers: [],
-      options: {
-        scrollwheel:false
-      }
-    };
-    $scope.marker = {
-      id: 0,
-      coords: {
-        latitude: 50.6278,
-        longitude: 3.0583
-      }
-    };
+    $scope.locals = [
+      '서울특별시',
+      '경기도',
+      '부산광역시',
+      '대구광역시',
+      '인천광역시',
+      '광주광역시',
+      '대전광역시',
+      '울산광역시',
+      '세종특별자치시',
+      '강원도',
+      '충청북도',
+      '충청남도',
+      '전라북도',
+      '전라남도',
+      '경상북도',
+      '경상남도',
+      '제주특별자치도'  
+    ];
 
-    $scope.searchbox= {
-      template: 'searchbox.tpl.html',
-      position:'top-right',
-      position:'top-left',
-      events:'events', 
-      parentdiv:'searchBoxParent',
-      options: {
-        bounds: {},
-        visible: true
-      },
-      events :{
-        places_changed: (searchBox) => {
-          const place = searchBox.getPlaces()[0];
-          this.user.place = place.name;
-          console.log("lat: " + place.geometry.location.lat());
-          console.log("lng: " + place.geometry.location.lng());
-          $scope.map.center = {
-            latitude: place.geometry.location.lat(),
-            longitude: place.geometry.location.lng()
-          };
-          $scope.marker.coords = {
-            latitude: place.geometry.location.lat(),
-            longitude:place.geometry.location.lng()
-          };
-        }
-      }
-    };
-  }
+
+    $scope.changedValue= (item) => {
+      const q = item;
+      $http.get('/api/locals/state', {
+        params: { q: item}
+      }).success(function(data)
+        {
+          $scope.states = data;
+        });
+    }  
+
+   }
 
   editprofile(form) {
     this.submitted = true;
-    const gotcha = this.$scope.items
+    const myField = this.$scope.items
       .filter((item) => item.ischecked)
       .map((item) => item.name);
-    this.user.myField= gotcha;
+    this.user.myField= myField;
 
-    const gotcha2 = this.$scope.mytypes
+    const mytype = this.$scope.mytypes
       .filter((mytype) => mytype.ischecked)
       .map((mytype) => mytype.name);
-    this.user.mytype= gotcha2;
+    this.user.mytype= mytype;
 
-    const gotcha3 = this.$scope.partnerField
+    const partnerField = this.$scope.partnerField
       .filter((partnerField) => partnerField.ischecked)
       .map((partnerField) => partnerField.name);
-    this.user.partnerField= gotcha3;
+    this.user.partnerField= partnerField;
+
 
     if (form.$valid) {
       this.Upload.upload({
@@ -154,15 +142,16 @@ class ProfileController {
           profileImage: this.user.profileImage,
           gender: this.user.gender, 
           myField: this.user.myField, 
-          place: this.user.place, 
+          local: this.user.local, 
+          state: this.user.state,
           mytype: this.user.mytype,
           partnerField: this.user.partnerField, 
           description: this.user.description 
         }
       })
         .then(() => {
-          //this.$state.go('profile');
-          location.reload();
+          this.$state.go('profile');
+        location.reload();
         })
         .catch(err => {
           err = err.data;

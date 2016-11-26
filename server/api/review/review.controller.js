@@ -49,7 +49,8 @@ export function getTags(req, res, next) {
   Review.aggregate([
     {$project: {text: '$tags', _id: 0}},
     { $unwind : "$text"  },
-    { $match : { text :{$regex: query}  }}
+    { $match : { text :{$regex: query}  }},
+    { $group : { _id : '$text'} }  
   ]
   )
     .then((docs) => {

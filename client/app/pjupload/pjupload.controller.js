@@ -7,17 +7,23 @@ class PjuploadController {
   submitted = false;
   //end-non-standard
 
-  constructor( Project, $state, $scope) {
+  constructor( Project, $state, $scope, $http) {
     this.Project = Project;
     this.$state  = $state;
     this.$scope = $scope;
+    this.$http = $http;
 
     $scope.items = [
-      'one', 
-      'two', 
-      'three', 
-      'four'
+      'Develop', 
+      'Designer', 
+      'Business', 
+      'art'
     ].map((v) => ({ name: v }));
+
+   $scope.pjtypes = [
+      '개인', 
+      '공모전'
+    ].map((v) => ({ name: v })); 
 
     const Checker = (limit) => {
       return (items) => {
@@ -27,15 +33,26 @@ class PjuploadController {
     };
 
     $scope.ItemsOver = Checker(3);
+
+    $scope.loadTags = (query) => {
+         return $http.get('/api/projects/get-tags', { 
+        params: { q: query }
+      }).then((res) => res.data.map((el) => el._id));
+    };
+
   }
 
   upload(form) {
     this.submitted = true;
-    const gotcha = this.$scope.items
+    const field = this.$scope.items
       .filter((item) => item.ischecked)
       .map((item) => item.name);
-    console.log(gotcha);
-    this.pjupload.field= gotcha;
+    this.pjupload.field= field;
+
+      const input_tags = this.$scope.tags
+      .map((tag) => tag.text);
+    this.pjupload.tags = input_tags; 
+
 
     if (form.$valid) {
       //$http.post('/api/projects/', this.pjupload)

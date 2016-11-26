@@ -34,15 +34,9 @@ class ReviewUploadController {
  
     
     $scope.loadTags = (query) => {
-    //  return this.Review.query().$promise
-     // .then((res) => {
-        
-       //$scope.tags = res.tags;
-        //console.log(res);
-     // });
       return $http.get('/api/reviews/get-tags', { 
         params: { q: query }
-      });
+      }).then((res) => res.data.map((el) => el._id));
     };
 
     

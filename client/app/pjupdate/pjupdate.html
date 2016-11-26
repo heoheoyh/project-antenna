@@ -24,6 +24,28 @@
 
           </div>
         </div></br>
+   <div class="row">
+          <div class="input-field col s12">
+            <span>Project Type</span>
+            <i>(choose Project Type)</i>
+            <br>
+            <span ng-repeat="pjtype in pjtypes">
+              <input name="group1"  type="radio" id="{{pjtype.name}}" ng-value="'{{pjtype.name}}'" ng-model="vm.pjupdate.type" />
+              <label for="{{pjtype.name}}">{{pjtype.name}}</label>
+            </span>
+          </div>
+        </div></br>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <span>Tags</span>
+            <tags-input id="pj_tag" ng-model="tags" min-length="1">
+               <auto-complete source="loadTags($query)"></auto-complete>
+            </tags-input>
+            <label for="pj_tag"></label>
+          </div>
+        </div>
+
         <div class="row">
           <div class="input-field col s12">
             <span class="prefix">Link</span>

@@ -4,13 +4,58 @@ $break-large:1200px;
 
 .img{
   height:500px;
-  background:url(../assets/images/collaboration01.jpg);
+  background:url(../assets/images/background3.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.6;
+  position: relative;
+
   @media screen and (max-width: $break-medium) {
-    display:none; 
+    height:280px;
+    background:url(../assets/images/background3_mobile.png) no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 
   }
+}
+
+.main-title{
+  position: absolute;
+  top: 200px;
+  width: 100%;
+ font-weight: 500;
+@media screen and (max-width: $break-medium) {
+      font-size: 26px;
+          top: 100px;
+  }
+
+}  
+.main-subtitle{
+ position: absolute;
+ top: 270px;
+ width: 100%;
+ font-weight: 400;
+@media screen and (max-width: $break-medium) {
+  font-size: 15px;
+      top: 142px;
+
+       }
 
 }
 .container{
   margin-top:50px;
 }
+
+.promo{
+  margin-top:40px;
+}
+#subtext{
+@media screen and (max-width: $break-medium) {
+  font-size: 20px;
+
+       }
+     }

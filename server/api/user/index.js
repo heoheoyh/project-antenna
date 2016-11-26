@@ -14,6 +14,7 @@ router.get('/', auth.hasRole('admin'), controller.index);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);
 //router.get('/', auth.isAuthenticated(),  controller.all);
 
+router.get('/get-local', auth.isAuthenticated(), controller.getLocal);
 router.get('/me', auth.isAuthenticated(), controller.me);
 router.put('/:id', auth.isAuthenticated(),upload.single('profileImage'), controller.update);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);

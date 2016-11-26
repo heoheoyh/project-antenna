@@ -4,7 +4,7 @@
     <div class="col s12">
       <h3>Partner</h3>
     </div>
-
+ 
     <div class="col s12 m8 offset-m2 l6 offset-l3">
       <div class="card-panel grey lighten-5 z-depth-1">
         <div class="row valign-wrapper">
@@ -19,14 +19,31 @@
         </div>
       </div>
     </div>
- 
+  <div class="row">
+          <div class="col s4">
+            <span>Location</span>
+            <select class="browser-default" ng-model="vm.user.local" ng-change="changedValue(vm.user.local)" material-select watch >
+              <option  disabled selected>시 선택</option>
+              <option ng-repeat="local in locals" value="{{local}}">{{local}}</option>
+            </select>
+          </div>
+          <div class="col s4">
+            <br>
+            <select class="browser-default" ng-model="selectedState" ng-change="changedState(selectedState)"  material-select watch>
+              <option  disabled selected>구 선택</option>
+              <option ng-repeat="state in states" value="{{state.state}}">{{state.state}}</option>
+            </select>
+          </div>
+        </div></br>
+ <p>파트너 추천 결과입니다</p>
+
       <div class="col s11" ng-repeat="x in partner">
         <hr>
-         <p>파트너 추천 결과입니다</p>
         <ul class="collection">
            <li class="collection-item avatar" style="padding-left:125px;">
             <img ng-src={{x.profileImage}} alt="" class="circle" id="partnerImg">
-            <span class="title">이름: {{x.name}}</span>
+             <span class="title">이름: {{x.name}}</span>
+             <p class="local">지역: {{x.local}} {{x.state}}</p>
             <p>파트너의 분야: {{x.myField.join(', ')}} <br>
             파트너가 원하는 분야: {{x.partnerField.join(', ')}}
             </p>

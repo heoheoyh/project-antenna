@@ -15,15 +15,37 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
+            <span>Project Type</span>
+            <i>(choose Project Type)</i>
+            <br>
+            <span ng-repeat="pjtype in pjtypes">
+              <input name="group1"  type="radio" id="{{pjtype.name}}" ng-value="'{{pjtype.name}}'" ng-model="vm.user.type" />
+              <label for="{{pjtype.name}}">{{pjtype.name}}</label>
+            </span>
+          </div>
+        </div></br>
+
+        <div class="row">
+          <div class="input-field col s12">
             <span>field check</span>
             <i>(choose field you want)</i>
             <br>
             <span ng-repeat="item in items">
-            <input type="checkbox" class="filled-in" id="{{item.name}}" ng-model="item.ischecked" ng-value="item.name" ng-disabled="ItemsOver(items) && !item.ischecked"/>
-            <label for="{{item.name}}">{{item.name}}</label>
+              <input type="checkbox" class="filled-in" id="{{item.name}}" ng-model="item.ischecked" ng-value="item.name" ng-disabled="ItemsOver(items) && !item.ischecked"/>
+              <label for="{{item.name}}">{{item.name}}</label>
             </span>
           </div>
         </div></br>
+        <div class="row">
+          <div class="input-field col s12">
+            <span>Tags</span>
+            <tags-input id="rv_tag" ng-model="tags" min-length="1">
+               <auto-complete source="loadTags($query)"></auto-complete>
+            </tags-input>
+            <label for="rv_tag"></label>
+          </div>
+        </div>
+
         <div class="row">
           <div class="input-field col s12">
             <span class="prefix">Link</span>

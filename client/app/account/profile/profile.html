@@ -63,21 +63,21 @@
           </div>
         </div></br>
         <div class="row">
-          <div class="col s12">
+          <div class="col s5">
             <span>Location</span>
-            <div id="searchBoxParent"></div>
-            <div id="map_canvas">
-              <script type="text/ng-template" id="searchbox.tpl.html">
-<input type="text" placeholder="Search Box" ng-model="ngModel"> 
-              </script>
-              <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
-                <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
-                </ui-gmap-marker>
-                <ui-gmap-search-box template="searchbox.template" events="searchbox.events" parentdiv="searchbox.parentdiv" ng-model="vm.user.place"></ui-gmap-search-box>
-              </ui-gmap-google-map>
-            </div>
+            <select class="" ng-model="vm.user.local" ng-init="changedValue(vm.user.local)" ng-change="changedValue(vm.user.local)" material-select watch >
+              <option  disabled selected>시 선택</option>
+              <option ng-repeat="local in locals" value="{{local}}">{{local}}</option>
+            </select>
           </div>
-        </div>
+          <div class="col s5">
+            <br>
+            <select class="" ng-model="vm.user.state" material-select watch>
+              <option  disabled selected>구 선택</option>
+              <option ng-repeat="state in states" value="{{state.state}}">{{state.state}}</option>
+            </select>
+          </div>
+        </div></br>
         <div class="row">
           <div class="input-field col s12">
             <span>My type</span>

@@ -39,6 +39,28 @@ export function all(req, res, next) {
       .catch(handleError(res));
   }
 }
+
+export function getLocal(req, res, next) {
+  const query = req.query.q;
+  console.log(query);
+    let myfield = req.user.myField;
+    let partnerfield = req.user.partnerField;
+    console.log(myfield);
+    console.log(partnerfield);
+
+    User.find({ 
+      myField:{$in: partnerfield},
+      partnerField: {$in: myfield},
+      state: query
+    })
+      .then(users => {
+        console.log(users);
+        res.status(200).json(users);
+      })
+      .catch(handleError(res));
+}
+
+
 //
 /**
  * Get list of users

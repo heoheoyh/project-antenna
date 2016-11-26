@@ -21,6 +21,16 @@ class PjupdateController {
       'four'
     ].map((v) => ({ name: v }));
 
+    $scope.tags = [
+      'just',
+      'taga'
+    ];
+
+   $scope.pjtypes = [
+      '개인', 
+      '공모전'
+    ].map((v) => ({ name: v })); 
+
     const Checker = (limit) => {
       return (items) => {
         const itemNum = items.filter((item) => item.ischecked).length;
@@ -28,6 +38,7 @@ class PjupdateController {
       };
     };
 
+    
     $scope.ItemsOver = Checker(3);
 
     this.Project.get({ id: $stateParams.mypjId}).$promise
@@ -37,8 +48,16 @@ class PjupdateController {
           item.ischecked = this.pjupdate.field.indexOf(item.name) >= 0;
           return item;
         });
+        $scope.tags = this.pjupdate.tags;
 
       });
+
+        $scope.loadTags = (query) => {
+         return $http.get('/api/projects/get-tags', { 
+        params: { q: query }
+      }).then((res) => res.data.map((el) => el._id));
+    };
+
   }
 
   update(form) {
@@ -46,8 +65,11 @@ class PjupdateController {
     const gotcha = this.$scope.items
       .filter((item) => item.ischecked)
       .map((item) => item.name);
-    console.log(gotcha);
     this.pjupdate.field= gotcha;
+
+    const input_tags = this.$scope.tags
+      .map((tag) => tag.text);
+    this.pjupdate.tags = input_tags;
 
     if (form.$valid) {
       this.$http.put('/api/projects/' + this.$stateParams.mypjId, this.pjupdate)
@@ -62,21 +84,21 @@ class PjupdateController {
       //       // this.$state.go('mypjlist');
       //        console.log(res);
       //      })
-      .catch(err => {
-        err = err.data;
-        this.errors = {};
+        .catch(err => {
+          err = err.data;
+          this.errors = {};
 
-        // Update validity of form fields that match the mongoose errors
-        angular.forEach(err.errors, (error, field) => {
-          form[field].$setValidity('mongoose', false);
-          this.errors[field] = error.message;
+          // Update validity of form fields that match the mongoose errors
+          angular.forEach(err.errors, (error, field) => {
+            form[field].$setValidity('mongoose', false);
+            this.errors[field] = error.message;
+          });
         });
-      });
     }
   }
 }
 
 angular.module('projectHeoApp')
-.controller('PjupdateController', PjupdateController);
+  .controller('PjupdateController', PjupdateController);
 
 

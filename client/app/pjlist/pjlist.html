@@ -9,8 +9,9 @@
         <tr>
           <th data-field="index">No</th>
           <th data-field="id">Title</th>
-          <th data-field="field">Field</th>
           <th data-field="name">Name</th>
+          <th data-field="type">Type</th>
+          <th data-field="field">Field</th>
           <th data-field="date">Date</th>
         </tr>
       </thead>
@@ -19,8 +20,9 @@
         <tr ng-repeat="x in pjlist"  >
           <td> {{$index + 1}} </td>
           <td><a ui-sref="pjview({ pid: x._id })"> {{x.title}}</a></td>
-          <td>{{x.field.join(' ')}}</td>
           <td>{{x._creator.name}} </td>
+          <td>{{x.type}}</td>
+          <td>{{x.field.join(' ')}}</td>
           <td>{{x.date | date:'yyyy-MM-dd HH:mm'}}</td>
         </tr>
       </tbody>

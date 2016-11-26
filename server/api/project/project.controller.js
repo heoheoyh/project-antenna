@@ -8,7 +8,7 @@ export function index(req, res, next) {
     .then((docs) => {
       res.status(200).json(docs); 
     })
-  .catch(next);
+    .catch(next);
 }
 
 export function create(req, res, next) {
@@ -19,20 +19,41 @@ export function create(req, res, next) {
     .then((doc) => {
       res.status(201).json(doc); 
     })
-  .catch(next);
+    .catch(next);
 }
 export function mine(req, res, next) {
   Project.find({ _creator: req.user._id })
     .then((docs) => {
       res.status(200).json(docs); 
     })
-  .catch(next);
+    .catch(next);
 }
+
+export function getMytags(req, res, next) {
+   Project.find({ _creator: req.user._id})
+  .distinct( "tags" )
+    .then((docs) => {
+      console.log(docs);
+      res.status(200).json(docs); 
+    })
+}
+
+export function getProjects(req, res, next) {
+  const query = req.query.q;
+  console.log(query);
+   Project.find({ tags: { $in: query }})
+    .populate('_creator')
+    .then((docs) => {
+      console.log(docs);
+      res.status(200).json(docs); 
+    })
+}
+
 export function update(req, res, next) {
   Project.findById(req.params.mypjId)
-     .then((project) => project.set(req.body).save())
-     .then(() => res.status(201).json())
-   .catch(next);
+    .then((project) => project.set(req.body).save())
+    .then(() => res.status(201).json())
+    .catch(next);
 }
 
 export function del(req, res, next){
@@ -41,6 +62,22 @@ export function del(req, res, next){
     .then(() => res.status(201).json())
     .catch(next);
 
+}
+
+export function getTags(req, res, next) {
+  const query = req.query.q;
+  //Review.aggregate([{$match: { $text: { $search: query } }},
+  Project.aggregate([
+    {$project: {text: '$tags', _id: 0}},
+    { $unwind : "$text"  },
+    { $match : { text :{$regex: query}  }},
+    { $group : { _id : '$text'} }
+  ]
+  )
+    .then((docs) => {
+      console.log(docs);
+      res.status(200).json(docs);
+    })
 }
 
 
