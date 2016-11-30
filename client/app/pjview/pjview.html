@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
-      <h3>Project View</h3>
+      <h3>View Project</h3>
     </div>
     <table class="bordered">
       <tbody>
@@ -15,10 +15,15 @@
           <td>{{vm.pjview._creator.name}} <img ng-src={{vm.pjview._creator.profileImage}} alt="" class="circle responsive-img" id="viewpic"> </td>
         </tr>
         <tr>
+          <th data-field="type">Type</th>
+          <td>{{vm.pjview.type}}</td>
+        </tr>
+
+        <tr>
           <th data-field="field">Field</th>
           <td>{{vm.pjview.field.join(' ')}}</td>
         </tr>
-   <tr>
+        <tr>
           <th data-field="tags">Tags</th>
           <td ng-repeat="tag in vm.pjview.tags" id="tag_display"><div class="chip">{{tag}}</div></td>
         </tr>

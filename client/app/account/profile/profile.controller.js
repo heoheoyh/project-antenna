@@ -32,10 +32,25 @@ class ProfileController {
     };
 
     $scope.items = [
-      'developer', 
+      'programmer', 
       'designer', 
       'business', 
-      'manager'
+      'planner',
+      'image',
+      'photo',
+      'marketing',
+      'broadcasting',
+      'fashion',
+      'economic',
+      'volunteer',
+      'thesis',
+      'education ',
+      'welfare',
+      'story',
+      'idea',
+      'sports',
+      'finance',
+      'advertising'
     ].map((v) => ({ name: v }));
 
     const genOverflowChecker = (limit) => {
@@ -48,17 +63,36 @@ class ProfileController {
     $scope.areItemsOverflowed = genOverflowChecker(3);
 
     $scope.mytypes = [
-      'good', 
-      'bad', 
-      'sad', 
-      'joy'
-    ].map((v) => ({ name: v }));
+      '~1month',
+      '1~2month', 
+      '2~3month', 
+      '3~4month', 
+      '4~5month',
+      '5~6month',
+      '6~month'
+    ];
 
     $scope.partnerField = [
-      'developer', 
+      'programmer', 
       'designer', 
       'business', 
-      'manager'
+      'planner',
+      'image',
+      'photo',
+      'marketing',
+      'broadcasting',
+      'fashion',
+      'economic',
+      'volunteer',
+      'thesis',
+      'education ',
+      'welfare',
+      'story',
+      'idea',
+      'sports',
+      'finance',
+      'advertising'
+
     ].map((v) => ({ name: v }));
 
     $scope.items =  $scope.items.map((item) => {
@@ -66,12 +100,7 @@ class ProfileController {
       return item;
     });
 
-    $scope.mytypes =  $scope.mytypes.map((mytype) => {
-      mytype.ischecked = this.user.mytype.indexOf(mytype.name) >= 0;
-      return mytype;
-    });
-
-    $scope.partnerField =  $scope.partnerField.map((partnerField) => {
+        $scope.partnerField =  $scope.partnerField.map((partnerField) => {
       partnerField.ischecked = this.user.partnerField.indexOf(partnerField.name) >= 0;
       return partnerField;
     });
@@ -113,7 +142,7 @@ class ProfileController {
         });
     }  
 
-   }
+  }
 
   editprofile(form) {
     this.submitted = true;
@@ -122,10 +151,6 @@ class ProfileController {
       .map((item) => item.name);
     this.user.myField= myField;
 
-    const mytype = this.$scope.mytypes
-      .filter((mytype) => mytype.ischecked)
-      .map((mytype) => mytype.name);
-    this.user.mytype= mytype;
 
     const partnerField = this.$scope.partnerField
       .filter((partnerField) => partnerField.ischecked)
@@ -150,8 +175,8 @@ class ProfileController {
         }
       })
         .then(() => {
-          this.$state.go('profile');
-        location.reload();
+          alert('프로필이 등록되었습니다'); 
+          location.reload();
         })
         .catch(err => {
           err = err.data;

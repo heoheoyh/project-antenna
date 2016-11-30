@@ -14,7 +14,8 @@ angular.module('projectHeoApp', [
   'uiGmapgoogle-maps',
   'checklist-model',
   'ngFileUpload',
-  'ngTagsInput'
+  'ngTagsInput',
+  'ngAnimate'
 ])
   .config(function($urlRouterProvider, $locationProvider, uiGmapGoogleMapApiProvider) {
     $urlRouterProvider

@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
-      <h3>Project Update</h3>
+      <h3>Update Project</h3>
     </div>
     <form class="col s12" name="form" ng-submit="vm.update(form)">
       <div id="update_form">
@@ -15,32 +15,35 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <span>field check</span>
-            <i>(choose field you want)</i><br>
-            <span ng-repeat="item in items">
-              <input type="checkbox" class="filled-in" id="{{item.name}}" ng-model="item.ischecked" ng-value="item.name"  ng-disabled="ItemsOver(items) && !item.ischecked"/>
-              <label for="{{item.name}}">{{item.name}}</label>
-            </span>
-
-          </div>
-        </div></br>
-   <div class="row">
-          <div class="input-field col s12">
             <span>Project Type</span>
-            <i>(choose Project Type)</i>
             <br>
             <span ng-repeat="pjtype in pjtypes">
               <input name="group1"  type="radio" id="{{pjtype.name}}" ng-value="'{{pjtype.name}}'" ng-model="vm.pjupdate.type" />
-              <label for="{{pjtype.name}}">{{pjtype.name}}</label>
+              <label for="{{pjtype.name}}" style="color:black">{{pjtype.name}}</label>
             </span>
           </div>
         </div></br>
 
         <div class="row">
           <div class="input-field col s12">
+            <span>Field Check</span>
+            <span>(프로젝트의 분야를 선택해주세요)</span>
+            <br>
+            <span ng-repeat="item in items">
+              <input type="checkbox" class="filled-in" id="{{item.name}}" ng-model="item.ischecked" ng-value="item.name"  ng-disabled="ItemsOver(items) && !item.ischecked"/>
+              <label for="{{item.name}}" style="color:black;">{{item.name}}</label>
+            </span>
+
+          </div>
+        </div></br>
+
+        <div class="row">
+          <div class="input-field col s12">
             <span>Tags</span>
+            <span>(프로젝트의 세부분야를 두개 이상 넣어주세요. 예시- php, mysql)</span>
+
             <tags-input id="pj_tag" ng-model="tags" min-length="1">
-               <auto-complete source="loadTags($query)"></auto-complete>
+              <auto-complete source="loadTags($query)"></auto-complete>
             </tags-input>
             <label for="pj_tag"></label>
           </div>
@@ -61,11 +64,10 @@
           </div>
         </div>
       </div>
-      <button class="btn waves-effect waves-light blue" type="submit" id="upload_btn" name="action">Udate
+      <button class="btn waves-effect waves-light indigo accent-4" type="submit" id="upload_btn" name="action">Udate
         <i class="material-icons right">send</i>
       </button>
     </form>
-
   </div>
 </div>
 

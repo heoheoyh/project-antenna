@@ -31,6 +31,7 @@ module.exports = function(config) {
       'client/bower_components/ng-file-upload/ng-file-upload.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       'client/bower_components/ng-tags-input/ng-tags-input.js',
+      'client/bower_components/angular-animate/angular-animate.js',
       // endbower
       'node_modules/socket.io-client/socket.io.js',
       'client/app/app.js',

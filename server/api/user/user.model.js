@@ -27,7 +27,7 @@ var UserSchema = new Schema({
   myField: [],
   local: String,
   state: String,
-  mytype: [],
+  mytype: String,
   partnerField: [],
   description: String
 });

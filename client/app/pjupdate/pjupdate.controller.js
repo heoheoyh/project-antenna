@@ -15,16 +15,29 @@ class PjupdateController {
     this.$state = $state;
 
     $scope.items = [
-      'one', 
-      'two', 
-      'three', 
-      'four'
-    ].map((v) => ({ name: v }));
+      'programming', 
+      'design', 
+      'business', 
+      'plan',
+      'image',
+      'photo',
+      'marketing',
+      'broadcasting',
+      'fashion',
+      'economic',
+      'volunteer',
+      'thesis',
+      'education ',
+      'welfare',
+      'story',
+      'idea',
+      'sports',
+      'finance',
+      'advertising'
 
-    $scope.tags = [
-      'just',
-      'taga'
-    ];
+         ].map((v) => ({ name: v }));
+
+    $scope.tags = [];
 
    $scope.pjtypes = [
       '개인', 

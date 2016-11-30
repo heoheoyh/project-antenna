@@ -1,17 +1,15 @@
 <div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper indigo">
-      <a href="main" class="brand-logo center ">PROJECT-ANTENNA</a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
+  <nav class="indigo">
+    <div class="nav-wrapper">
+      <a href="main" class="brand-logo" style="padding-left:25px;">PROJECT-ANTENNA</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="review_list">PROJECT-REVIEW</a></li>
         <li><a href="pjlist">PROJECT-LIST</a></li>
-      </ul>
-      <ul class="right hide-on-med-and-down">
         <li><a href="partner">PARTNER</a></li>
-        <li ng-hide="nav.isLoggedIn()"><a href="signup">SIGN UP</a></li>
-        <li ng-hide="nav.isLoggedIn()"><a href="login">LOGIN</a></li>
         <li ng-show="nav.isLoggedIn()"><a class='dropdown' href='#' data-activates='demoDropdown' dropdown data-hover="false">{{ nav.getCurrentUser().name | uppercase }}</a></li>
         <li ng-show="nav.isLoggedIn()"><a href="logout">LOGOUT</a></li>
+        <li ng-hide="nav.isLoggedIn()"><a href="signup">SIGN UP</a></li>
+        <li ng-hide="nav.isLoggedIn()"><a href="login">LOGIN</a></li>
       </ul>
       <ul id="mobile-demo" class="side-nav">
         <li><div class="userView" style="height: 155px;">
@@ -24,13 +22,13 @@
           </div></li>
           <li ng-hide="nav.isLoggedIn()"><a href="signup">sign up</a></li>
           <li ng-hide="nav.isLoggedIn()"><a href="login">login</a></li>
-              <li ng-show="nav.isLoggedIn()"><a href="profile">profile</a></li>  
-              <li ng-show="nav.isLoggedIn()"><a href="settings">settings</a></li> 
-              <li><div class="divider"></div></li>
-              <li><a href="partner">partner</a><li>
-                  <li><a href="pjlist">project-list</a></li>    
-                  <li><a href="review_list">project-review</a></li>
-                    <li><span ng-show="nav.isLoggedIn()"><a href="logout">logout</a></span><li>  
+          <li ng-show="nav.isLoggedIn()"><a href="profile">profile</a></li>  
+          <li ng-show="nav.isLoggedIn()"><a href="settings">settings</a></li> 
+          <li><div class="divider"></div></li>
+          <li><a href="partner">partner</a><li>
+              <li><a href="pjlist">project-list</a></li>    
+              <li><a href="review_list">project-review</a></li>
+              <li><span ng-show="nav.isLoggedIn()"><a href="logout">logout</a></span><li>  
       </ul>
       <a href="#" class="button-collapse" data-activates="mobile-demo" data-sidenav="left" data-menuwidth="250" data-closeonclick="true"><i class="material-icons">menu</i>
       </a>

@@ -12,10 +12,26 @@ class ReviewUploadController {
     this.$http = $http;
 
     $scope.items = [
-      'one', 
-      'two', 
-      'three', 
-      'four'
+      'programming', 
+      'design', 
+      'business', 
+      'plan',
+      'image',
+      'photo',
+      'marketing',
+      'broadcasting',
+      'fashion',
+      'economic',
+      'volunteer',
+      'thesis',
+      'education ',
+      'welfare',
+      'story',
+      'idea',
+      'sports',
+      'finance',
+      'advertising'
+
     ].map((v) => ({ name: v }));
 
     const Checker = (limit) => {
@@ -27,19 +43,21 @@ class ReviewUploadController {
 
     $scope.ItemsOver = Checker(3);
 
-    $scope.tags = [
-      'just',
-      'taga'
-    ];
- 
-    
+    $scope.tags = [];
+    $scope.rvtypes = [
+      '포트폴리오', 
+      '공모전',
+      '기타'
+    ].map((v) => ({ name: v })); 
+
+
     $scope.loadTags = (query) => {
       return $http.get('/api/reviews/get-tags', { 
         params: { q: query }
       }).then((res) => res.data.map((el) => el._id));
     };
 
-    
+
   }
 
   upload(form) {

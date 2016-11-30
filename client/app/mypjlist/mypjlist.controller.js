@@ -3,26 +3,30 @@
 
 class MypjlistController {
 
-  constructor(Project,$scope, $http) {
+  constructor(Project,User,$scope, $http) {
     this.Project = Project;
+    this.User = User;
     this.$scope = $scope;
     this.$http = $http;
     
+    this.User.get().$promise
+      .then((res) => {
+        $scope.me = res;
+      });
+
+
    this.Project.mine().$promise
       .then((res) => {
-   //    this.mypjlist = res;
     $scope.mypjlist = res;
       });
 
   $http.get('/api/projects/get-mytags')
     .then((res) => {
        $scope.mytags = res.data;
-     console.log($scope.mytags); 
       const query = $scope.mytags;
        $http.get('/api/projects/get-projects', { params: {q: query}})  
         .then((res) => {
           $scope.getprojects= res.data;
-          console.log($scope.getprojects);
         });
        
     }); 

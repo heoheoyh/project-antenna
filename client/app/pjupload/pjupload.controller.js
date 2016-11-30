@@ -14,15 +14,33 @@ class PjuploadController {
     this.$http = $http;
 
     $scope.items = [
-      'Develop', 
-      'Designer', 
-      'Business', 
-      'art'
+      'programming', 
+      'design', 
+      'business', 
+      'plan',
+      'image',
+      'photo',
+      'marketing',
+      'broadcasting',
+      'fashion',
+      'economic',
+      'volunteer',
+      'thesis',
+      'education ',
+      'welfare',
+      'story',
+      'idea',
+      'sports',
+      'finance',
+      'advertising'
+
     ].map((v) => ({ name: v }));
 
+    $scope.tags = [];
    $scope.pjtypes = [
-      '개인', 
-      '공모전'
+      '포트폴리오', 
+      '공모전',
+      '기타'
     ].map((v) => ({ name: v })); 
 
     const Checker = (limit) => {

@@ -2,7 +2,8 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
-      <h3>Project Upload</h3>
+      <h3>Upload Project</h3>
+      <p>원하시는 프로젝트를 올리고 파트너를 구해보세요</p>
     </div>
     <form class="col s12" name="form" ng-submit="vm.upload(form)">
       <div id="upload_form">
@@ -10,35 +11,35 @@
           <div class="input-field col s12">
             <span class="prefix">Title</span>
             <input id="pj_title" type="text" class="validate" ng-model="vm.pjupload.title">
-            <label for="pj_title">ㅇㅇ분야 팀원 구합니다</label>
+            <label for="pj_title">ㅇㅇ분야 팀원구합니다</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
             <span>Project Type</span>
-            <i>(choose Project Type)</i>
             <br>
             <span ng-repeat="pjtype in pjtypes">
-              <input name="group1"  type="radio" id="{{pjtype.name}}" ng-value="'{{pjtype.name}}'" ng-model="vm.user.type" />
-              <label for="{{pjtype.name}}">{{pjtype.name}}</label>
+              <input name="group1"  type="radio" id="{{pjtype.name}}" ng-value="'{{pjtype.name}}'" ng-model="vm.pjupload.type" />
+              <label for="{{pjtype.name}}" style="color:black;">{{pjtype.name}}</label>
             </span>
           </div>
         </div></br>
 
         <div class="row">
           <div class="input-field col s12">
-            <span>field check</span>
-            <i>(choose field you want)</i>
+            <span>Field Check</span>
+            <span>(프로젝트의 분야를 선택해주세요)</span>
             <br>
             <span ng-repeat="item in items">
               <input type="checkbox" class="filled-in" id="{{item.name}}" ng-model="item.ischecked" ng-value="item.name" ng-disabled="ItemsOver(items) && !item.ischecked"/>
-              <label for="{{item.name}}">{{item.name}}</label>
+              <label for="{{item.name}}" style="color:black">{{item.name}}</label>
             </span>
           </div>
         </div></br>
         <div class="row">
           <div class="input-field col s12">
             <span>Tags</span>
+            <span>(프로젝트의 세부분야를 두개 이상 넣어주세요. 예시- php, mysql)</span>
             <tags-input id="rv_tag" ng-model="tags" min-length="1">
                <auto-complete source="loadTags($query)"></auto-complete>
             </tags-input>
@@ -50,18 +51,18 @@
           <div class="input-field col s12">
             <span class="prefix">Link</span>
             <input id="pj_link" name="pj_link"  type="url" class="validate" ng-model="vm.pjupload.link" >
-            <label for="pj_link">Write your project link</label>
+            <label for="pj_link">해당 프로젝트의 링크를 넣어주세요</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
             <span class="prefix">Content</span>
             <textarea id="content"  class="materialize-textarea" ng-model="vm.pjupload.content"></textarea>
-            <label for="content">Project Content</label>
+            <label for="content">프로젝트의 내용을 넣어주세요</label>
           </div>
         </div>
       </div>
-      <button class="btn waves-effect waves-light blue" type="submit" id="upload_btn" name="action">Submit
+      <button class="btn waves-effect waves-light indigo accent-4" type="submit" id="upload_btn" name="action">Submit
         <i class="material-icons right">send</i>
       </button>
     </form>

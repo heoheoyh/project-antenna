@@ -3,17 +3,16 @@ $break-medium: 640px;
 $break-large:1200px;
 
 .img{
-  height:500px;
+  height:700px;
   background:url(../assets/images/background3.png) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  opacity: 0.6;
   position: relative;
 
   @media screen and (max-width: $break-medium) {
-    height:280px;
+    height:350px;
     background:url(../assets/images/background3_mobile.png) no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -22,28 +21,61 @@ $break-large:1200px;
 
   }
 }
+.box{
+  position:absolute;
+  background-color: black;
+  width: 100%;
+  top: 0px;
+  height: 700px;
+  opacity: 0.4;
+  background-size: cover;
+  @media screen and (max-width: $break-medium) {
+    height:350px;
 
+  }
+
+} 
+
+#navbar{
+  position: absolute;
+  top: 0px;
+}
+#navbar nav{
+  background-color: transparent;
+  box-shadow: none;
+}
+.nav-fadein {
+  animation-name: fadein;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes fadein {
+  from {background-color: rgba(#3f51b5, 0);}
+  to {background-color: rgba(#3f51b5, 1);}
+}
 .main-title{
   position: absolute;
   top: 200px;
   width: 100%;
- font-weight: 500;
-@media screen and (max-width: $break-medium) {
-      font-size: 26px;
-          top: 100px;
+  font-weight: 500;
+  color: white;
+  @media screen and (max-width: $break-medium) {
+    font-size: 26px;
+    top: 100px;
   }
 
 }  
 .main-subtitle{
- position: absolute;
- top: 270px;
- width: 100%;
- font-weight: 400;
-@media screen and (max-width: $break-medium) {
-  font-size: 15px;
-      top: 142px;
+  position: absolute;
+  top: 270px;
+  width: 100%;
+  font-weight: 400;
+  color: white;
+  @media screen and (max-width: $break-medium) {
+    font-size: 15px;
+    top: 142px;
 
-       }
+  }
 
 }
 .container{
@@ -53,9 +85,25 @@ $break-large:1200px;
 .promo{
   margin-top:40px;
 }
-#subtext{
-@media screen and (max-width: $break-medium) {
-  font-size: 20px;
 
-       }
-     }
+.promo-caption {
+ @media screen and (max-width: $break-medium) {
+    font-size: 15px;
+
+  }
+
+}
+nav .brand-logo {
+ @media screen and (max-width: $break-medium) {
+    font-size: 20px;
+
+  }
+
+}
+
+#subtext{
+  @media screen and (max-width: $break-medium) {
+    font-size: 20px;
+
+  }
+}

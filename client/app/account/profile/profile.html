@@ -23,7 +23,7 @@
           <div class="input-field col s12">
             <span class="prefix">URL</span>
             <input id="url" name="url"  type="text" class="validate" ng-model="vm.user.url" >
-            <label for="url">url</label>
+            <label for="url">자신을 보여줄 수 있는 웹사이트 또는 SNS주소를 남겨주세요</label>
           </div>
         </div>
         <div class="file-field input-field">
@@ -53,7 +53,7 @@
         <div class="row">
           <div class="input-field col s12">
             <span>My Fields</span>
-            <i>(choose My fields)</i>
+            <span>(자신의 분야를 선택하세요! 최대 3개까지 가능합니다.)</span>
             <br>
             <span ng-repeat="item in items">
               <input type="checkbox" class="filled-in" name="myfield" id="mfield-{{item.name}}" ng-model="item.ischecked" ng-value="item.name" ng-disabled="areItemsOverflowed(items) && !item.ischecked"/>
@@ -80,12 +80,12 @@
         </div></br>
         <div class="row">
           <div class="input-field col s12">
-            <span>My type</span>
-            <i>(choose My type)</i>
+            <span>Project Period</span>
+            <span>(원하시는 프로젝트의 기간을 선택해주세요)</span>
             <br>
             <span ng-repeat="mytype in mytypes">
-              <input type="checkbox" class="filled-in" id="{{mytype.name}}" ng-model="mytype.ischecked" ng-value="mytype.name" ng-disabled="areItemsOverflowed(mytypes) && !mytype.ischecked"/>
-              <label for="{{mytype.name}}">{{mytype.name}}</label>
+              <input type="radio" id="{{mytype}}" ng-model="vm.user.mytype" ng-value="mytype"/>
+              <label for="{{mytype}}">{{mytype}}</label>
             </span>
 
           </div>
@@ -94,7 +94,7 @@
         <div class="row">
           <div class="input-field col s12">
             <span>Partner Fields</span>
-            <i>Choose Partner fields you want</i>
+            <span>(원하시는 파트너의 분야를 선택하세요! 최대 3개까지 가능합니다.)</span>
             <br>
             <span ng-repeat="pfield in partnerField">
               <input type="checkbox" class="filled-in" name="partnerfield" id="pfield-{{pfield.name}}" ng-model="pfield.ischecked" ng-value="pfield.name" ng-disabled="areItemsOverflowed(partnerField) && ! pfield.ischecked"/>
@@ -109,7 +109,7 @@
           <div class="input-field col s12">
             <i id="message"class="material-icons prefix">mode_edit</i>
             <textarea id="icon_prefix2" class="materialize-textarea" ng-model="vm.user.description"></textarea>
-            <label for="icon_prefix2">Description</label>
+            <label for="icon_prefix2">자유롭게 메세지를 남겨주세요!</label>
           </div>
         </div>
         <button class="btn waves-effect waves-light blue" type="submit" name="action">Submit

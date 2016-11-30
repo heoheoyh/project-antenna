@@ -23,7 +23,8 @@ class SignupController {
       })
       .then(() => {
         // Account created, redirect to home
-        this.$state.go('login');
+        alert('회원가입이 완료되었습니다!');
+        this.$state.go('main');
       })
       .catch(err => {
         err = err.data;

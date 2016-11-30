@@ -60,6 +60,25 @@ export function getLocal(req, res, next) {
       .catch(handleError(res));
 }
 
+export function getPeriod(req, res, next) {
+  const query = req.query.q;
+  console.log(query);
+    let myfield = req.user.myField;
+    let partnerfield = req.user.partnerField;
+    let state = req.user.state;
+
+    User.find({ 
+      myField:{$in: partnerfield},
+      partnerField: {$in: myfield},
+      state: state,
+      mytype: query
+    })
+      .then(users => {
+        console.log(users);
+        res.status(200).json(users);
+      })
+      .catch(handleError(res));
+}
 
 //
 /**
