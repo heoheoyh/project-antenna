@@ -21,7 +21,7 @@
     </div>
     <div class="row">
       <div class="col s4">
-        <span>Location</span>
+        <span>지역을 추가해보세요!</span>
         <select class="browser-default" ng-model="vm.user.local" ng-change="changedValue(vm.user.local)" material-select watch >
           <option  disabled selected>시 선택</option>
           <option ng-repeat="local in locals" value="{{local}}">{{local}}</option>
@@ -37,7 +37,7 @@
     </div>
     <div class="row">
       <div class="col s4">
-        <span>Project period</span>
+        <span>기간을 추가해보세요!</span>
         <select class="browser-default" ng-model="vm.user.period" ng-change="changedperiod(vm.user.period, slectedState)" material-select watch >
           <option  disabled selected>기간 선택</option>
           <option ng-repeat="period in mytypes" value="{{period}}">{{period}}</option>
@@ -45,7 +45,7 @@
       </div>
     </div></br>
 
-    <p>파트너 추천 결과입니다</p>
+    <p style="font-size:17px; font-weight:bold;">파트너 추천 결과입니다</p>
 
     <div class="col s11" ng-repeat="x in partner">
       <hr>
@@ -54,6 +54,7 @@
           <img ng-src={{x.profileImage}} alt="" class="circle" id="partnerImg">
           <span class="title">이름: {{x.name}}</span>
           <p class="email">Email: {{x.email}}</p>
+          <p class="partner">URL: {{x.url}}</p>
           <p class="local">지역: {{x.local}} {{x.state}}</p>
            <p class="period">기간: {{x.mytype}}</p> 
           <p>파트너의 분야: {{x.myField.join(', ')}} <br>
@@ -67,8 +68,6 @@
 
   </div>
 </div>
-
-
 
 
 

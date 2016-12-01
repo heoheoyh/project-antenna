@@ -107,3 +107,13 @@ nav .brand-logo {
 
   }
 }
+[type="checkbox"].filled-in:not(:checked) + label:after{
+  height: 15px;
+  width: 15px;
+}
+[type="checkbox"] + label {
+  padding-left: 25px;
+}
+#sidenav-overlay{
+  position: relative;
+}

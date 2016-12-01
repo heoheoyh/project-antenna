@@ -39,7 +39,7 @@ class PartnerController {
       '제주특별자치도'  
     ];
 
-  $scope.mytypes = [
+    $scope.mytypes = [
       '~1month',
       '1~2month', 
       '2~3month', 
@@ -59,23 +59,23 @@ class PartnerController {
           $scope.states = data;
           //const query = $scope.states;
         });
-      
+
     }  
 
     $scope.changedState= (item) => {
       const query = item;
       $http.get('/api/users/get-local', {params: {q:query}})
-      .then((res) => {
-        $scope.partner = res.data;
-      });
+        .then((res) => {
+          $scope.partner = res.data;
+        });
     }
 
- $scope.changedperiod= (item) => {
+    $scope.changedperiod= (item) => {
       const query = item;
       $http.get('/api/users/get-period', {params: {q:query}})
-      .then((res) => {
-        $scope.partner = res.data;
-      });
+        .then((res) => {
+          $scope.partner = res.data;
+        });
     }
   }
 

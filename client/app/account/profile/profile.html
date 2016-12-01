@@ -44,9 +44,9 @@
             <p>
             <span>gender</span>
             <input class="with-gap" name="gender" type="radio" id="male" ng-value="'male'" ng-model="vm.user.gender" />
-            <label for="male">male</label>
+            <label for="male" style="color:black;">male</label>
             <input class="with-gap" name="gender" type="radio" id="female" ng-value="'female'" ng-model="vm.user.gender"/>
-            <label for="female">female</label>
+            <label for="female" style="color:black;">female</label>
             </p>
           </div>
         </div>
@@ -57,7 +57,7 @@
             <br>
             <span ng-repeat="item in items">
               <input type="checkbox" class="filled-in" name="myfield" id="mfield-{{item.name}}" ng-model="item.ischecked" ng-value="item.name" ng-disabled="areItemsOverflowed(items) && !item.ischecked"/>
-              <label for="mfield-{{item.name}}">{{item.name}}</label>
+              <label for="mfield-{{item.name}}" style="color:black;">{{item.name}}</label>
             </span>
 
           </div>
@@ -85,7 +85,7 @@
             <br>
             <span ng-repeat="mytype in mytypes">
               <input type="radio" id="{{mytype}}" ng-model="vm.user.mytype" ng-value="mytype"/>
-              <label for="{{mytype}}">{{mytype}}</label>
+              <label for="{{mytype}}" style="color:black;">{{mytype}}</label>
             </span>
 
           </div>
@@ -98,7 +98,7 @@
             <br>
             <span ng-repeat="pfield in partnerField">
               <input type="checkbox" class="filled-in" name="partnerfield" id="pfield-{{pfield.name}}" ng-model="pfield.ischecked" ng-value="pfield.name" ng-disabled="areItemsOverflowed(partnerField) && ! pfield.ischecked"/>
-              <label for="pfield-{{pfield.name}}">{{pfield.name}}</label>
+              <label for="pfield-{{pfield.name}}" style="color:black;">{{pfield.name}}</label>
             </span>
 
 
