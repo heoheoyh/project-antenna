@@ -10,15 +10,15 @@ import Project from '../api/project/project.model';
 
 import Review from '../api/review/review.model';
 
-Project.remove({})
-  .then(() => {
-    console.log('finished removing projects');
-  });
-
-Review.remove({})
-  .then(() => {
-    console.log('finished removing reviews');}
-  );
+//Project.remove({})
+//  .then(() => {
+//    console.log('finished removing projects');
+//  });
+//
+//Review.remove({})
+//  .then(() => {
+//    console.log('finished removing reviews');}
+//  );
 
 Thing.find({}).removeAsync()
   .then(() => {
@@ -55,7 +55,7 @@ Thing.find({}).removeAsync()
     });
   });
 
-User.find({}).removeAsync()
+User.find({})
   .then(() => {
     User.createAsync({
       provider: 'local',
@@ -123,7 +123,7 @@ provider: 'local',
     },{
     provider: 'local',
       name: 'jun',
-      email: 'abcedf@gmail.com',
+      email: 'abf@gmail.com',
       password: '1234',
       url: 'https://project-antenna.herokuapp.com/profile',
       gender: 'male',
@@ -153,7 +153,7 @@ provider: 'local',
       password: '1234',
       url: 'https://project-antenna.herokuapp.com/profile',
       gender: 'male',
-      myField:['disginer', 'business'],
+      myField:['designer', 'business'],
       local: '서울특별시',
       state: '용산구',
       mytype: '1~2month',
@@ -166,7 +166,7 @@ provider: 'local',
       password: '1234',
       url: 'https://project-antenna.herokuapp.com/profile',
       gender: 'male',
-      myField:['disginer', 'planner'],
+      myField:['designer', 'planner'],
       local: '서울특별시',
       state: '용산구',
       mytype: '1~2month',
@@ -198,7 +198,35 @@ provider: 'local',
       mytype: '1~2month',
       partnerField:['programmer'],
       description: '안녕하세요 함께 프로젝트 할 프로그래머 구합니다'
+    },{
+      provider: 'local',
+      name: 'Daye',
+      email: 'fff@gmail.com',
+      password: '1234',
+      url: 'https://project-antenna.herokuapp.com/profile',
+      gender: 'female',
+      myField:['programmer', 'designer'],
+      local: '서울특별시',
+      state: '광진구',
+      mytype: '2~3month',
+      partnerField:['programmer'],
+      description: '안녕하세요 함께 프로젝트 할 프로그래머 구합니다'
+    },{
+      provider: 'local',
+      name: 'dony',
+      email: 'ggg@gmail.com',
+      password: '1234',
+      url: 'https://project-antenna.herokuapp.com/profile',
+      gender: 'male',
+      myField:['programmer', 'planner'],
+      local: '서울특별시',
+      state: '광진구',
+      mytype: '2~3month',
+      partnerField:['designer'],
+      description: '안녕하세요 함께 프로젝트 할 디자이너 구합니다'
     }
+
+
     
     )
     .then(() => {

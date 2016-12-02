@@ -1,12 +1,13 @@
+<div id="back-color">
 <navbar></navbar>
-
 <div class="container">
-  <div class="row">
+  <div class="row" id="white-back">
     <div class="col s12">
-      <h3>Edit Profile</h3>
+        <i class="medium material-icons">perm_identity</i>
+        <p style="font-size:20px;">Edit Profile</p>
     </div>
     <div class="col s12">
-      <form class="form" name="form" ng-submit="vm.editprofile(form)"  method="post" enctype="multipart/form-data" >
+      <form class="form" id="profile-form" name="form" ng-submit="vm.editprofile(form)"  method="post" enctype="multipart/form-data" >
         <div class="row">
           <div class="input-field col s6">
             <span class="prefix">Name</span>
@@ -27,8 +28,8 @@
           </div>
         </div>
         <div class="file-field input-field">
-          <div class="btn blue">
-            <span>Upload</span>
+          <div class="btn indigo accent-4">
+            <span>My Picture</span>
             <input type="file" ngf-select ng-model="vm.user.profileImage"  accept="image/*" ngf-max-size="2MB" ngf-model-invalid="errorFile">
             <i ng-show="myForm.file.$error.maxSize">File too large 
               {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
@@ -43,9 +44,9 @@
           <div class="input-field col s12">
             <p>
             <span>gender</span>
-            <input class="with-gap" name="gender" type="radio" id="male" ng-value="'male'" ng-model="vm.user.gender" />
+            <input name="gender" type="radio" id="male" ng-value="'male'" ng-model="vm.user.gender" />
             <label for="male" style="color:black;">male</label>
-            <input class="with-gap" name="gender" type="radio" id="female" ng-value="'female'" ng-model="vm.user.gender"/>
+            <input name="gender" type="radio" id="female" ng-value="'female'" ng-model="vm.user.gender"/>
             <label for="female" style="color:black;">female</label>
             </p>
           </div>
@@ -112,7 +113,7 @@
             <label for="icon_prefix2">자유롭게 메세지를 남겨주세요!</label>
           </div>
         </div>
-        <button class="btn waves-effect waves-light blue" type="submit" name="action">Submit
+        <button class="btn waves-effect waves-light indigo accent-4" type="submit" name="action">Submit
           <i class="material-icons right">send</i>
         </button>
       </form>
@@ -122,8 +123,7 @@
 </div>
 
 
-
 <footer class="page-footer grey darken-4"></footer>
-
+</div>
 
 

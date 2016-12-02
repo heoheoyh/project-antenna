@@ -30,9 +30,10 @@
 
     <div class="tag_match">
       <hr class="style-hr">
-      <p class="indigo-text text-accent-4">{{me.name}}님의 태그들로 파트너를 추천해드릴게요!<p>
+      <img src="../assets/images/partner-icon.png" style="width:50px;">
+      <span class="indigo-text text-accent-4">{{me.name}}님의 태그들로 파트너를 추천해드릴게요!<span>
       <div class="row">
-        <div class="card white" ng-repeat="pj in getprojects">
+        <div class="card white" ng-repeat="pj in getprojects" ng-if="me.name != pj._creator.name">
           <div class="card-content">
             <span class="card-title">{{pj._creator.name}}   <img ng-src={{pj._creator.profileImage}} class="circle responsive-img">
             </span>

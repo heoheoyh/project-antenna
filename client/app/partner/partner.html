@@ -1,11 +1,14 @@
+<div id="partner-back">
 <navbar></navbar>
+   <div class="pimg"></div>
+
 <div class="container">
   <div class="row">
     <div class="col s12">
-      <h3>Partner</h3>
+      <img id="parnterIcon" src="../assets/images/partner-icon.png"></img>
+      <span style="font-size:20px;">{{my.name}}님의 Partner를 추천해드릴게요 !</span>
     </div>
-
-    <div class="col s12 m8 offset-m2 l6 offset-l3">
+    <div class="col s12 m8 offset-m2 l6 offset-l3" style="margin-top:50px;margin-bottom:50px;">
       <div class="card-panel grey lighten-5 z-depth-1">
         <div class="row valign-wrapper">
           <div class="col s2">
@@ -47,9 +50,9 @@
 
     <p style="font-size:17px; font-weight:bold;">파트너 추천 결과입니다</p>
 
-    <div class="col s11" ng-repeat="x in partner">
+    <div class="col s11" ng-repeat="x in partner" ng-if="my.name != x.name" >
       <hr>
-      <ul class="collection">
+      <ul class="collection z-depth-1">
         <li class="collection-item avatar" style="padding-left:125px;">
           <img ng-src={{x.profileImage}} alt="" class="circle" id="partnerImg">
           <span class="title">이름: {{x.name}}</span>
@@ -61,7 +64,8 @@
           파트너가 원하는 분야: {{x.partnerField.join(', ')}}
           </p>
           <p>한마디: {{x.description}}</p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+          <div>
+          <a href="#!" class="secondary-content" tooltipped  data-position="right" data-delay="200" data-tooltip="메세지를 보내보세요!"><i class="material-icons" style="color: #3f51b5">message</i></a>
         </li>
       </ul>
     </div>
@@ -72,3 +76,4 @@
 
 
 <footer class="page-footer grey darken-4"></footer>
+</div>

@@ -1,8 +1,39 @@
+$break-small: 320px;
+$break-medium: 640px;
+$break-large:1200px;
+
+#partner-back{
+  background-color: rgba(236, 239, 241, 0.5);
+}
+#parnterIcon{
+  width:50px;
+}
+
 #myImg {
   max-width: 100%;
 }
 #partnerImg{
   width:90px;
   height:90px;
+}
+.pimg{
+  height:400px;
+  background:url(../assets/images/partner.jpeg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+
+  @media screen and (max-width: $break-medium) {
+    height:350px;
+    background:url(../assets/images/partner_mobile.jpeg) no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+  }
+
 }
 

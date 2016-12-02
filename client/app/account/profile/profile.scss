@@ -1,10 +1,10 @@
+$break-small: 320px;
+$break-medium: 640px;
+$break-large:1200px;
+
+
 .row .input-field .prefix{
   font-size:0.9em;
-}
-.angular-google-map-container { 
-  width: 400px;
-  height: 350px;
-
 }
 #message{
 
@@ -12,5 +12,30 @@
 }
 img.responsive-img, video.responsive-video {
   max-width: 20%;
+}
+
+#back-color{
+  background-color: rgba(236, 239, 241, 0.5);
+}
+
+#white-back{
+  background-color:white;
+}
+#profile-form{
+  margin-bottom: 45px;
+}
+[type="checkbox"].filled-in:checked + label:after {
+  border: 2px solid #536dfe;
+  background-color: #536dfe;
+  z-index: 0;
+}
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:after {
+  background-color:#536dfe ;
+}
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:before,
+[type="radio"].with-gap:checked + label:after {
+  border: 2px solid #536dfe;
 }
 

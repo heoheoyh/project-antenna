@@ -1,0 +1,29 @@
+$break-small: 320px;
+$break-medium: 640px;
+$break-large:1200px;
+
+.rvlistBack{
+  background-color:rgba(236, 239, 241, 0.5);
+}
+
+#rvlistImg{
+  height:400px;
+  background:url(../assets/images/project.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+
+  @media screen and (max-width: $break-medium) {
+    height:350px;
+    background:url(../assets/images/project_mobile.png) no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+  }
+
+}
+

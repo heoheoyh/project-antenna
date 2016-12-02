@@ -1,4 +1,6 @@
+<div class="rvlistBack">
 <navbar></navbar>
+<div id="rvlistImg"></div>
 <div class="container">
   <div class="row">
     <div class="col s12">
@@ -18,7 +20,7 @@
       </thead>
 
       <tbody>
-        <tr ng-repeat="x in rvlist"  >
+        <tr ng-repeat="x in rvlist | orderBy:'date':true"  >
           <td> {{$index + 1}} </td>
           <td><a ui-sref="review_view({ pid: x._id })"> {{x.title}}</a></td>
           <td>{{x.field.join(' ')}}</td>
@@ -32,3 +34,4 @@
 </div>
 
 <footer class="page-footer grey darken-4"></footer>
+</div>
