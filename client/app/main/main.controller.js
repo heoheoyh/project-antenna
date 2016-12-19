@@ -2,34 +2,22 @@
 
 (function() {
 
-class MainController {
+  class MainController {
 
-  constructor($http, $scope, socket) {
-    this.$http = $http;
-    $scope.awesomeThings = [];
+    constructor($http, $scope, $stateParams, Project) {
+      this.$http = $http;
+      this.Project = Project;
+      this.$scope = $scope;
 
-    $http.get('/api/things').then(response => {
-      $scope.awesomeThings = response.data;
-      socket.syncUpdates('thing', $scope.awesomeThings);
-    });
+      this.Project.query().$promise
+        .then((res) => {
+          $scope.newPjlist= res;
 
-    $scope.$on('$destroy', function() {
-      socket.unsyncUpdates('thing');
-    });
-  }
+          //$scope.pjlist = Project.query();
+        });
 
-  addThing() {
-    if (this.newThing) {
-      this.$http.post('/api/things', { name: this.newThing });
-      this.newThing = '';
     }
   }
-
-  deleteThing(thing) {
-    this.$http.delete('/api/things/' + thing._id);
-  }
-}
-
-angular.module('projectHeoApp')
-  .controller('MainController', MainController);
+  angular.module('projectHeoApp')
+    .controller('MainController', MainController);
 })();

@@ -1,0 +1,40 @@
+* 2d0cb13 : Updating UI and seed : 
+* dfd2cc6 : Updating css file, Adding seed : 
+* 3d0d066 : Updating Main page UI : 
+* ec5df4a : Add related project user in mypjlist 파트너 state부분 추가, UI 수정중 : 
+* 9506191 : Add Tags autocomplete ajax, 태그 자동완성 기능 추가 : 
+* 6f88a54 : Add project-review menu (develping) : complete directory review-upload, review-list, myreview, review-view, review-update
+|  
+* d66b027 : Partner menu develop(파트너 메뉴 개발중) : 
+* 807edae : Add dist for heroku : 
+* 14b9d32 : add static file directory : 
+* d23be56 : Never forget push! complete ng-file-upload : 
+* d2c6172 : complete project-list : 
+* 67dc2fa : almost complete project-list : 
+* b41cb28 : creat pjupload table : 
+* 1d206c1 : profile complete(almost) : 
+* 0af5865 : Add db table field : 
+* a11b084 : add edit profile table(form) and db content : 
+* 15df8eb : form data mongoDB : 
+* 004bc64 : install angular-materialize and mobile nav bar : 
+* e4e5be1 : install materilize and create directory : 
+* 4902048 : delete foo.html : 
+* 60feabd : delete hi : ok?
+| 
+| Closes #1
+|    
+*   ae99a74 : Merge remote-tracking branch 'refs/remotes/origin/master' : 
+|\  
+| * 748fa72 : title : body
+| | 
+| | tail!
+| |   
+* | 28e6f93 : hihihihihihihi : 
+|/  
+* 8a530c0 : title : body
+| 
+| tail
+|  
+* 5e5d233 : add tags : 
+* 397259e : apply angular metarial module : 
+* 29275ff : first commit : 

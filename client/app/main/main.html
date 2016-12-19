@@ -3,7 +3,7 @@
   <div class="box"></div>
   <h3 class="main-title center-align">나와 맞는 프로젝트 파트너</h3>
   <h5 class="main-subtitle center-align">Project-Antenna에서 자신이 원하는 파트너를 찾아보세요</h5>
-<navbar id="navbar" scroll-nav></navbar>
+  <navbar id="navbar" scroll-nav></navbar>
 
 </section>
 <div class="container">
@@ -11,6 +11,18 @@
     <div class="row">
       <h4 id="subtext" class="col s12 center header">Project-Antenna는 프로젝트를 공고 및 구인하고 파트너를 매칭시켜줍니다.</h4>
     </div>
+      <div class="row">
+        <p style="font-size:18px; color:#424242;">Recent Project</p>
+        <div class="card white" ng-repeat="newPj in newPjlist | orderBy: 'date':true | limitTo:3 ">
+          <div class="card-content black-text">
+            <a ui-sref="pjview({pid: newPj._id})"><span class="card-title indigo-text text-darken-4">{{newPj.title}}</span></a>
+            <p>{{newPj.field.join(' ')}}</p>
+          </div>
+          <div class="card-action">
+            <span>{{newPj.type}}</span>
+          </div>
+        </div>
+      </div>
     <div class="row promo">
       <div class="col s4">
         <div class="center promo">
